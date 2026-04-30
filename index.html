@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dede Hardiyanto - Strategic IT & Digital Ecosystem Manager</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        .bg-banking { background-color: #010409; }
+        .text-gradient {
+            background: linear-gradient(90deg, #3b82f6, #60a5fa, #22d3ee);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-blur {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        @keyframes subtle-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        .float-anim { animation: subtle-float 6s ease-in-out infinite; }
+    </style>
+</head>
+<body class="bg-banking text-slate-300">
+
+    <!-- Navigasi -->
+    <nav class="fixed top-0 w-full z-50 bg-[#010409]/90 backdrop-blur-xl border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <img src="logo.png" alt="Dede Hardiyanto" class="w-12 h-12 rounded-full border-2 border-blue-500 object-cover shadow-lg shadow-blue-500/20" onerror="this.src='https://via.placeholder.com/100?text=DH'">
+                <div>
+                    <h1 class="text-sm font-extrabold tracking-tighter text-white uppercase">DEDE HARDIYANTO</h1>
+                    <p class="text-[9px] font-bold text-blue-500 uppercase tracking-widest">IT Strategic Leadership</p>
+                </div>
+            </div>
+            <div class="hidden lg:flex space-x-10 text-[10px] font-extrabold uppercase tracking-widest text-slate-500">
+                <a href="#home" class="hover:text-blue-400 transition-colors">Beranda</a>
+                <a href="#experience" class="hover:text-blue-400 transition-colors">Karir</a>
+                <a href="#card-center" class="hover:text-blue-400 transition-colors">Card Specialist</a>
+                <a href="#ai-media" class="hover:text-blue-400 transition-colors">AI & Media</a>
+                <a href="#skills" class="hover:text-blue-400 transition-colors">Keahlian</a>
+            </div>
+            <a href="#contact" class="bg-blue-600 hover:bg-blue-500 text-white px-8 py-3 rounded-2xl text-[10px] font-extrabold uppercase tracking-widest transition-all shadow-xl shadow-blue-600/30">Hubungi</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section id="home" class="relative pt-44 pb-32 px-6 overflow-hidden">
+        <div class="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-[150px]"></div>
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-20">
+            <div class="flex-1 text-center lg:text-left space-y-10">
+                <div class="inline-flex items-center space-x-3 px-5 py-2 rounded-full bg-blue-500/10 border border-blue-500/20">
+                    <i data-lucide="shield-check" class="w-4 h-4 text-blue-400"></i>
+                    <span class="text-[9px] font-extrabold text-blue-400 uppercase tracking-[0.4em]">Strategic Ecosystem Architect</span>
+                </div>
+                <h2 class="text-6xl md:text-8xl lg:text-[7.5rem] font-extrabold leading-[0.8] tracking-tighter text-white uppercase">
+                    STRATEGIC <br> <span class="text-gradient">IT MANAGER</span>
+                </h2>
+                <p class="text-xl md:text-2xl font-bold text-slate-500 max-w-2xl leading-tight mx-auto lg:mx-0">
+                    Menyelaraskan <span class="text-white italic">Infrastruktur Perbankan</span>, <span class="text-blue-500">Otomasi AI</span>, & <span class="text-white">Transformasi Media</span> Nasional.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center gap-8 justify-center lg:justify-start">
+                    <a href="#contact" class="px-12 py-6 bg-blue-600 text-white rounded-[2rem] font-extrabold uppercase tracking-widest text-xs hover:bg-blue-500 transition-all shadow-2xl shadow-blue-600/40">Inisiasi Sekarang</a>
+                    <div class="flex items-center space-x-4">
+                        <div class="h-px w-12 bg-white/10"></div>
+                        <span class="text-[9px] font-extrabold text-slate-600 uppercase tracking-[0.4em] italic">99.9% Uptime SLA</span>
+                    </div>
+                </div>
+            </div>
+            <div class="relative hidden lg:block float-anim">
+                <div class="bg-gradient-to-tr from-slate-800 to-slate-900 p-2 rounded-[4rem] shadow-2xl border border-white/10 overflow-hidden">
+                    <img src="hero.jpg" alt="Dede Hardiyanto" class="w-80 h-[520px] object-cover rounded-[3.5rem] grayscale-[10%] hover:grayscale-0 transition-all duration-1000 shadow-inner" onerror="this.src='https://via.placeholder.com/400x600?text=DH'">
+                </div>
+                <div class="absolute -bottom-8 -left-8 bg-slate-900 border border-white/10 p-8 rounded-[2.5rem] shadow-2xl">
+                    <div class="flex items-center space-x-4">
+                        <div class="p-4 bg-blue-600 rounded-2xl text-white shadow-lg"><i data-lucide="lock" size="24"></i></div>
+                        <div>
+                            <p class="text-[9px] font-extrabold text-slate-500 uppercase tracking-widest">Banking</p>
+                            <p class="text-lg font-extrabold text-white leading-none tracking-tighter">SECURED</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partner Bar -->
+    <section class="py-20 border-y border-white/5 bg-white/[0.01]">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-5 gap-12 items-center opacity-40">
+            <div class="flex flex-col items-center group cursor-default hover:opacity-100 transition-opacity">
+                <i data-lucide="zap" class="text-emerald-500 mb-3"></i>
+                <span class="text-[10px] font-extrabold uppercase tracking-widest">Envira ID</span>
+            </div>
+            <div class="flex flex-col items-center group cursor-default hover:opacity-100 transition-opacity">
+                <i data-lucide="play-circle" class="text-red-500 mb-3"></i>
+                <span class="text-[10px] font-extrabold uppercase tracking-widest">HAS Creative</span>
+            </div>
+            <div class="flex flex-col items-center group cursor-default hover:opacity-100 transition-opacity">
+                <i data-lucide="globe" class="text-blue-500 mb-3"></i>
+                <span class="text-[10px] font-extrabold uppercase tracking-widest">Acuantoday</span>
+            </div>
+            <div class="flex flex-col items-center group cursor-default hover:opacity-100 transition-opacity">
+                <i data-lucide="radio" class="text-orange-500 mb-3"></i>
+                <span class="text-[10px] font-extrabold uppercase tracking-widest">Majalengka Channel</span>
+            </div>
+            <div class="flex flex-col items-center group cursor-default hover:opacity-100 transition-opacity">
+                <i data-lucide="shield" class="text-indigo-400 mb-3"></i>
+                <span class="text-[10px] font-extrabold uppercase tracking-widest">Bank MNC</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Card Ops -->
+    <section id="card-center" class="py-32 bg-[#020617] relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-6">
+                <h3 class="text-5xl md:text-7xl font-extrabold text-white uppercase tracking-tighter leading-none">CARD CENTER <br> <span class="text-blue-600">OPERATIONS</span></h3>
+                <p class="text-slate-600 font-bold uppercase tracking-[0.4em] text-[10px] border-l border-blue-600 pl-6">ISO 8583 • HSM PayShield 9000 • PCI DSS</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="card-blur p-12 rounded-[3.5rem] hover:border-blue-500/20 transition-all group">
+                    <div class="w-16 h-16 bg-blue-600/10 rounded-2xl flex items-center justify-center text-blue-500 mb-10 group-hover:bg-blue-600 group-hover:text-white transition-all shadow-xl shadow-blue-500/5">
+                        <i data-lucide="shuffle"></i>
+                    </div>
+                    <h4 class="text-2xl font-extrabold text-white uppercase mb-4 tracking-tighter">ATM Switching</h4>
+                    <p class="text-slate-500 font-bold text-sm leading-relaxed italic">Manajemen operasional switching ISO 8583 ketersediaan tinggi.</p>
+                </div>
+                <div class="card-blur p-12 rounded-[3.5rem] hover:border-blue-500/20 transition-all group">
+                    <div class="w-16 h-16 bg-blue-600/10 rounded-2xl flex items-center justify-center text-blue-500 mb-10 group-hover:bg-blue-600 group-hover:text-white transition-all shadow-xl shadow-blue-500/5">
+                        <i data-lucide="lock"></i>
+                    </div>
+                    <h4 class="text-2xl font-extrabold text-white uppercase mb-4 tracking-tighter">Fraud Defense</h4>
+                    <p class="text-slate-500 font-bold text-sm leading-relaxed italic">Implementasi 3DSecure & mitigasi risiko fraud sistem kartu.</p>
+                </div>
+                <div class="card-blur p-12 rounded-[3.5rem] hover:border-blue-500/20 transition-all group">
+                    <div class="w-16 h-16 bg-blue-600/10 rounded-2xl flex items-center justify-center text-blue-500 mb-10 group-hover:bg-blue-600 group-hover:text-white transition-all shadow-xl shadow-blue-500/5">
+                        <i data-lucide="key"></i>
+                    </div>
+                    <h4 class="text-2xl font-extrabold text-white uppercase mb-4 tracking-tighter">HSM Expert</h4>
+                    <p class="text-slate-500 font-bold text-sm leading-relaxed italic">Spesialis HSM PayShield untuk enkripsi PIN perbankan global.</p>
+                </div>
+                <div class="card-blur p-12 rounded-[3.5rem] hover:border-blue-500/20 transition-all group">
+                    <div class="w-16 h-16 bg-blue-600/10 rounded-2xl flex items-center justify-center text-blue-500 mb-10 group-hover:bg-blue-600 group-hover:text-white transition-all shadow-xl shadow-blue-500/5">
+                        <i data-lucide="activity"></i>
+                    </div>
+                    <h4 class="text-2xl font-extrabold text-white uppercase mb-4 tracking-tighter">IVR Automation</h4>
+                    <p class="text-slate-500 font-bold text-sm leading-relaxed italic">Otomasi layanan nasabah cerdas melalui Interactive Voice Response.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI & Multimedia Hub -->
+    <section id="ai-media" class="py-32 bg-gradient-to-b from-[#020617] to-[#010409] relative overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 w-[600px] h-[600px] bg-indigo-600/5 rounded-full blur-[150px] -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-24">
+                <h3 class="text-5xl md:text-8xl font-extrabold text-white uppercase tracking-tighter leading-none mb-6">AI & MULTIMEDIA <br> <span class="text-gradient italic">REVOLUTION</span></h3>
+                <p class="text-slate-600 font-bold uppercase tracking-[0.5em] text-[10px]">Otomasi Cerdas • Skala Nasional • Transformasi Media</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white/[0.02] border border-white/5 p-16 rounded-[4rem] flex flex-col md:flex-row items-center gap-12 hover:bg-white/[0.04] transition-all group">
+                    <div class="w-24 h-24 bg-indigo-600/10 rounded-[2rem] flex items-center justify-center text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition-all shrink-0">
+                        <i data-lucide="brain-circuit" size="40"></i>
+                    </div>
+                    <div class="text-center md:text-left">
+                        <h4 class="text-3xl font-extrabold text-white uppercase mb-3 tracking-tighter leading-none">AI RECRUITMENT</h4>
+                        <p class="text-slate-500 font-bold text-sm leading-relaxed italic opacity-80">"Filtrasi otomatis ribuan kandidat real-time berbasis Python AI."</p>
+                    </div>
+                </div>
+                <div class="bg-white/[0.02] border border-white/5 p-16 rounded-[4rem] flex flex-col md:flex-row items-center gap-12 hover:bg-white/[0.04] transition-all group">
+                    <div class="w-24 h-24 bg-red-600/10 rounded-[2rem] flex items-center justify-center text-red-400 group-hover:bg-red-600 group-hover:text-white transition-all shrink-0">
+                        <i data-lucide="video" size="40"></i>
+                    </div>
+                    <div class="text-center md:text-left">
+                        <h4 class="text-3xl font-extrabold text-white uppercase mb-3 tracking-tighter leading-none">MEDIA SCALE-UP</h4>
+                        <p class="text-slate-500 font-bold text-sm leading-relaxed italic opacity-80">"Scale-up infrastruktur digital HAS Creative & Acuantoday."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Timeline -->
+    <section id="experience" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h3 class="text-5xl md:text-7xl font-extrabold text-white uppercase tracking-tighter mb-24">PROFESSIONAL <span class="text-blue-600">BLUEPRINT</span></h3>
+            <div class="space-y-12">
+                <div class="card-blur p-16 rounded-[4rem] relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-12 opacity-5 text-white"><i data-lucide="database" size="150"></i></div>
+                    <div class="flex flex-col lg:flex-row gap-16 relative z-10">
+                        <div class="lg:w-1/3">
+                            <span class="px-6 py-2 bg-blue-600 rounded-full text-[10px] font-extrabold text-white uppercase tracking-widest">2016 - SEKARANG</span>
+                            <h4 class="text-4xl font-extrabold text-white tracking-tighter mt-8 leading-[0.9] uppercase">Independent Strategic Consultant</h4>
+                            <p class="text-blue-500 font-extrabold uppercase text-[10px] tracking-widest mt-4">IT & Digital Systems Lead</p>
+                        </div>
+                        <div class="lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="p-6 bg-white/5 rounded-[2rem] border border-white/5 font-bold text-sm text-slate-400 leading-relaxed italic hover:bg-white/[0.08] transition-colors">
+                                Integrasi Aliran Data ESG G20 Bali 2022 (Envira ID).
+                            </div>
+                            <div class="p-6 bg-white/5 rounded-[2rem] border border-white/5 font-bold text-sm text-slate-400 leading-relaxed italic hover:bg-white/[0.08] transition-colors">
+                                Arsitek Platform Rekrutmen Nasional Berbasis AI.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-blur p-16 rounded-[4rem] relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 p-12 opacity-5 text-white"><i data-lucide="shield" size="150"></i></div>
+                    <div class="flex flex-col lg:flex-row gap-16 relative z-10">
+                        <div class="lg:w-1/3">
+                            <span class="px-6 py-2 bg-blue-600 rounded-full text-[10px] font-extrabold text-white uppercase tracking-widest">2010 - 2016</span>
+                            <h4 class="text-4xl font-extrabold text-white tracking-tighter mt-8 leading-[0.9] uppercase">PT Bank MNC Internasional</h4>
+                            <p class="text-blue-500 font-extrabold uppercase text-[10px] tracking-widest mt-4">IT Specialist & Card Center Specialist</p>
+                        </div>
+                        <div class="lg:w-2/3 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div class="p-6 bg-white/5 rounded-[2rem] border border-white/5 font-bold text-sm text-slate-400 leading-relaxed italic hover:bg-white/[0.08] transition-colors">
+                                Migrasi Infrastruktur Kritis Zero Data Loss Jaringan MPLS.
+                            </div>
+                            <div class="p-6 bg-white/5 rounded-[2rem] border border-white/5 font-bold text-sm text-slate-400 leading-relaxed italic hover:bg-white/[0.08] transition-colors">
+                                Management iSeries AS400 Uptime 99.9% 24/7 Nasional.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-32 bg-white px-6 rounded-t-[5rem]">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-24">
+                <h3 class="text-6xl md:text-[10rem] font-extrabold text-slate-950 uppercase tracking-tighter leading-none">KEAHLIAN</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-slate-50 p-12 rounded-[3.5rem] border border-slate-100 hover:shadow-2xl transition-all group">
+                    <div class="flex items-center justify-between mb-12">
+                        <div class="w-16 h-16 bg-slate-950 rounded-[1.2rem] flex items-center justify-center text-blue-500 shadow-xl group-hover:scale-110 transition-transform">
+                            <i data-lucide="shield"></i>
+                        </div>
+                        <span class="text-3xl font-extrabold text-slate-950 tracking-tighter">95%</span>
+                    </div>
+                    <h5 class="text-2xl font-extrabold text-slate-950 uppercase tracking-tighter mb-8">Governance</h5>
+                    <div class="space-y-3">
+                        <div class="h-2 w-full bg-slate-200 rounded-full overflow-hidden">
+                            <div class="h-full bg-blue-600 transition-all duration-1000" style="width: 95%"></div>
+                        </div>
+                        <p class="text-[9px] font-extrabold text-slate-400 uppercase tracking-widest">IT Governance & DRP Expert</p>
+                    </div>
+                </div>
+                <div class="bg-slate-50 p-12 rounded-[3.5rem] border border-slate-100 hover:shadow-2xl transition-all group">
+                    <div class="flex items-center justify-between mb-12">
+                        <div class="w-16 h-16 bg-slate-950 rounded-[1.2rem] flex items-center justify-center text-blue-500 shadow-xl group-hover:scale-110 transition-transform">
+                            <i data-lucide="credit-card"></i>
+                        </div>
+                        <span class="text-3xl font-extrabold text-slate-950 tracking-tighter">98%</span>
+                    </div>
+                    <h5 class="text-2xl font-extrabold text-slate-950 uppercase tracking-tighter mb-8">Card Tech</h5>
+                    <div class="space-y-3">
+                        <div class="h-2 w-full bg-slate-200 rounded-full overflow-hidden">
+                            <div class="h-full bg-blue-600 transition-all duration-1000" style="width: 98%"></div>
+                        </div>
+                        <p class="text-[9px] font-extrabold text-slate-400 uppercase tracking-widest">ISO 8583 & HSM Systems</p>
+                    </div>
+                </div>
+                <div class="bg-slate-50 p-12 rounded-[3.5rem] border border-slate-100 hover:shadow-2xl transition-all group">
+                    <div class="flex items-center justify-between mb-12">
+                        <div class="w-16 h-16 bg-slate-950 rounded-[1.2rem] flex items-center justify-center text-blue-500 shadow-xl group-hover:scale-110 transition-transform">
+                            <i data-lucide="cpu"></i>
+                        </div>
+                        <span class="text-3xl font-extrabold text-slate-950 tracking-tighter">92%</span>
+                    </div>
+                    <h5 class="text-2xl font-extrabold text-slate-950 uppercase tracking-tighter mb-8">AI & Data</h5>
+                    <div class="space-y-3">
+                        <div class="h-2 w-full bg-slate-200 rounded-full overflow-hidden">
+                            <div class="h-full bg-blue-600 transition-all duration-1000" style="width: 92%"></div>
+                        </div>
+                        <p class="text-[9px] font-extrabold text-slate-400 uppercase tracking-widest">Python & ETL Pipeline</p>
+                    </div>
+                </div>
+                <div class="bg-slate-50 p-12 rounded-[3.5rem] border border-slate-100 hover:shadow-2xl transition-all group">
+                    <div class="flex items-center justify-between mb-12">
+                        <div class="w-16 h-16 bg-slate-950 rounded-[1.2rem] flex items-center justify-center text-blue-500 shadow-xl group-hover:scale-110 transition-transform">
+                            <i data-lucide="video"></i>
+                        </div>
+                        <span class="text-3xl font-extrabold text-slate-950 tracking-tighter">94%</span>
+                    </div>
+                    <h5 class="text-2xl font-extrabold text-slate-950 uppercase tracking-tighter mb-8">Multimedia</h5>
+                    <div class="space-y-3">
+                        <div class="h-2 w-full bg-slate-200 rounded-full overflow-hidden">
+                            <div class="h-full bg-blue-600 transition-all duration-1000" style="width: 94%"></div>
+                        </div>
+                        <p class="text-[9px] font-extrabold text-slate-400 uppercase tracking-widest">Broadcasting & Digital Branding</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 px-6 bg-[#010409]">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-32">
+                <h3 class="text-5xl md:text-[9rem] font-extrabold text-white uppercase tracking-tighter leading-none mb-6">CONNECT</h3>
+                <p class="text-blue-500 font-extrabold uppercase tracking-[0.6em] text-[10px] italic">Let's Build The Next High-Impact Strategic Ecosystem</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="bg-white rounded-[4rem] p-16 md:p-24 text-slate-950 shadow-2xl">
+                    <h4 class="text-5xl font-extrabold uppercase tracking-tighter mb-12 leading-[0.9]">Start a <br> Discussion</h4>
+                    <form class="space-y-8">
+                        <input type="text" class="w-full bg-slate-100 px-8 py-6 rounded-2xl font-bold border-none outline-none focus:ring-4 focus:ring-blue-100 transition-all" placeholder="Nama Lengkap">
+                        <textarea class="w-full bg-slate-100 px-8 py-6 rounded-2xl font-bold border-none outline-none focus:ring-4 focus:ring-blue-100 transition-all h-40" placeholder="Detail Kebutuhan Strategis..."></textarea>
+                        <button type="button" class="w-full bg-blue-600 py-7 rounded-2xl font-extrabold text-white uppercase tracking-[0.3em] text-sm shadow-2xl shadow-blue-600/30">Inisiasi Sekarang</button>
+                    </form>
+                </div>
+                <div class="flex flex-col justify-between py-12">
+                    <div class="space-y-10">
+                        <div class="p-10 bg-white/5 border border-white/5 rounded-[3rem] flex items-center space-x-8 hover:border-blue-500/20 transition-all group">
+                            <i data-lucide="mail" class="text-blue-500 group-hover:scale-110 transition-transform"></i>
+                            <div>
+                                <p class="text-[10px] font-extrabold text-slate-500 uppercase tracking-widest mb-1">Direct Mail</p>
+                                <p class="text-2xl font-extrabold text-white tracking-tight leading-none">mrdhex@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="p-10 bg-white/5 border border-white/5 rounded-[3rem] flex items-center space-x-8 hover:border-blue-500/20 transition-all group">
+                            <i data-lucide="phone" class="text-blue-500 group-hover:scale-110 transition-transform"></i>
+                            <div>
+                                <p class="text-[10px] font-extrabold text-slate-500 uppercase tracking-widest mb-1">Direct Line</p>
+                                <p class="text-2xl font-extrabold text-white tracking-tight leading-none">0823-1888-5200</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-center lg:justify-start space-x-12 opacity-30 pt-20">
+                        <i data-lucide="instagram" size="24"></i>
+                        <i data-lucide="facebook" size="24"></i>
+                        <i data-lucide="youtube" size="24"></i>
+                        <i data-lucide="twitter" size="24"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 border-t border-white/5 bg-[#010409]">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-12">
+            <div class="flex items-center gap-6">
+                <img src="logo.png" class="w-16 h-16 rounded-full border border-blue-500/30 grayscale hover:grayscale-0 transition-all" onerror="this.src='https://via.placeholder.com/100'">
+                <div>
+                    <p class="text-xl font-extrabold text-white tracking-tighter uppercase leading-none">DEDE HARDIYANTO</p>
+                    <p class="text-[10px] font-extrabold uppercase tracking-widest text-blue-500 mt-2">Strategic IT Ecosystems — Architecture</p>
+                </div>
+            </div>
+            <div class="text-center md:text-right">
+                <p class="text-[10px] font-extrabold uppercase tracking-[0.5em] text-slate-700 italic">Security • Resilience • Excellence</p>
+                <p class="text-[10px] font-bold text-slate-800 mt-3 uppercase tracking-widest leading-none">© 2026 — Dede Hardiyanto | Zero Data Loss Priority</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Inisialisasi ikon Lucide
+        lucide.createIcons();
+    </script>
+</body>
+</html>
