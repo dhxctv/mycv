@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="light">
+<html lang="id" class="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,336 +31,465 @@
         :root { --p-color: #ff014f; }
         html { scroll-behavior: smooth; }
         * { font-style: normal !important; letter-spacing: 0px !important; }
-        .is-quote { font-style: italic !important; } 
 
-        body { transition: background-color 0.4s ease; font-feature-settings: "lnum"; }
+        body { background-color: #ecf0f3; color: #3c3e41; transition: 0.4s ease; }
+        .dark body { background-color: #1a1d23; color: #c4cfde; }
         
-        /* --- NEUMORPHISM TOKENS --- */
-        .light .inbio-card { background: #ecf0f3; box-shadow: 10px 10px 20px #d1d9e6, -10px -10px 20px #ffffff; transition: 0.4s ease; }
-        .light .inbio-btn { background: #ecf0f3; box-shadow: 6px 6px 12px #d1d9e6, -6px -6px 12px #ffffff; }
-        .light .inbio-input { background: #ffffff; box-shadow: inset 4px 4px 8px #d1d9e6, inset -4px -4px 8px #ffffff; border:none; }
+        /* Neumorphism Executive Foundation */
+        .inbio-card { 
+            background: #ecf0f3; 
+            box-shadow: 10px 10px 19px #d1d9e6, -10px -10px 19px #ffffff; 
+            border-radius: 40px;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .dark .inbio-card { 
+            background: #212428; 
+            box-shadow: 10px 10px 19px #14161a, -5px -5px 15px #2a2e33; 
+        }
         
-        .dark .inbio-card { background: #212428; box-shadow: 10px 10px 20px #14161a, -5px -5px 15px #2a2e33; transition: 0.4s ease; }
-        .dark .inbio-btn { background: linear-gradient(145deg, #1e2125, #23272b); box-shadow: 6px 6px 12px #14161a, -6px -6px 12px #2a2e33; }
-        .dark .inbio-input { background: #1a1d23; box-shadow: inset 4px 4px 8px #14161a, inset -2px -2px 8px #2a2e33; border:none; }
+        .inbio-btn { 
+            background: #ecf0f3; 
+            box-shadow: 6px 6px 12px #d1d9e6, -6px -6px 12px #ffffff; 
+            transition: 0.3s;
+        }
+        .dark .inbio-btn { 
+            background: linear-gradient(145deg, #1e2125, #23272b); 
+            box-shadow: 6px 6px 12px #14161a, -6px -6px 12px #2a2e33; 
+        }
 
-        /* --- THE INBIO TIMELINE ARCHITECTURE (STRICT PRECISION) --- */
-        .tl-wrapper { position: relative; padding-left: 60px; margin-left: 20px; }
-        .tl-main-line { position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: #d1d9e6; z-index: 1; }
+        /* --- THE AXIS LOCK SYSTEM --- */
+        .axis-wrapper { 
+            position: relative; 
+            margin-left: 10%; 
+            max-width: 900px; 
+            padding-left: 0;
+        }
+        @media (max-width: 768px) { .axis-wrapper { margin-left: 30px; } }
+
+        /* Garis Utama Timeline (Top Layer) */
+        .tl-main-line { 
+            position: absolute; 
+            left: 0; 
+            top: 0; 
+            bottom: 0; 
+            width: 5px; 
+            background: #d1d9e6; 
+            z-index: 20; /* Lebih tinggi dari judul */
+        }
         .dark .tl-main-line { background: #2c3036; }
-        
-        .tl-item { position: relative; margin-bottom: 70px; z-index: 5; }
-        
-        /* Connector Line (Horizontal) - Default Gray */
-        .tl-connector { position: absolute; left: -60px; top: 40px; width: 60px; height: 5px; background: #d1d9e6; z-index: 1; transition: 0.4s; }
-        .dark .tl-connector { background: #2c3036; }
 
-        /* The Node (Locked exactly on the main line) */
+        /* Header Boxes (Lower Layer) */
+        .sector-header-box { 
+            position: relative;
+            background: #212428;
+            padding: 25px 50px;
+            border-radius: 25px;
+            display: inline-block;
+            margin-bottom: 60px;
+            color: white;
+            box-shadow: 5px 10px 20px rgba(0,0,0,0.3);
+            left: -20px; /* Offset agar memotong garis timeline */
+            z-index: 10; /* Di bawah garis timeline */
+        }
+        .light .sector-header-box {
+            background: linear-gradient(145deg, #212428, #3c3e41);
+        }
+        .banking-box {
+            background: linear-gradient(145deg, #ff014f, #d10041) !important;
+        }
+
+        .tl-item { 
+            position: relative; 
+            padding-left: 60px; 
+            margin-bottom: 70px; 
+            z-index: 30; 
+        }
+        
+        /* Simpul Lingkaran (Locked on Axis) */
         .tl-node { 
-            position: absolute; left: 0px; top: 28px; width: 30px; height: 30px; 
-            background: #ecf0f3; border: 5px solid #d1d9e6; border-radius: 50%; z-index: 10; 
+            position: absolute; 
+            left: 0px; 
+            top: 30px; 
+            width: 30px; 
+            height: 30px; 
+            background: #ecf0f3; 
+            border: 6px solid #d1d9e6; 
+            border-radius: 50%; 
+            z-index: 40; 
             transform: translateX(-50%);
             transition: 0.4s ease;
         }
         .dark .tl-node { background: #212428; border-color: #2c3036; }
 
-        /* ACTIVE INTERACTION (Triggered by Click or Shortcut) */
-        .active-item .tl-node { background: #ff014f; border-color: #ff014f; box-shadow: 0 0 25px rgba(255,1,79,0.6); }
+        /* Connector horisontal */
+        .tl-connector { 
+            position: absolute; 
+            left: 0px; 
+            top: 43px; 
+            width: 60px; 
+            height: 5px; 
+            background: #d1d9e6; 
+            z-index: 15; 
+        }
+        .dark .tl-connector { background: #2c3036; }
+
+        /* ACTIVE INTERACTION */
+        .active-item .tl-node { background: #ff014f !important; border-color: #ff014f !important; box-shadow: 0 0 20px rgba(255,1,79,0.6); }
         .active-item .tl-connector { background: #ff014f !important; }
-        .active-item .inbio-card { background: linear-gradient(145deg, #ff014f, #d10041) !important; transform: translateY(-5px) scale(1.01); box-shadow: 15px 15px 30px rgba(255,1,79,0.2) !important; }
-        .active-item .inbio-card h4, .active-item .inbio-card p, .active-item .inbio-card h5, .active-item li { color: white !important; }
-        .active-item .inbio-card .job-triangle { border-right-color: white !important; }
-        /* Badge Year: White background with Red bold text on Active */
-        .active-item .inbio-card .badge-year { background: white !important; color: #ff014f !important; border: 1px solid white; font-weight: 900; box-shadow: 5px 5px 15px rgba(0,0,0,0.1); }
+        .active-item .inbio-card { background: linear-gradient(145deg, #ff014f, #d10041) !important; transform: scale(1.02); }
+        .active-item h4, .active-item p, .active-item li, .active-item span { color: white !important; }
+        .active-item .badge-year { background: white !important; color: #ff014f !important; font-weight: 900; border: 2px solid white; }
+        .active-item .job-triangle { border-right-color: white !important; }
 
         .job-triangle { width: 0; height: 0; border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-right: 12px solid #ff014f; margin-right: 15px; }
-        .badge-year { background: #ff014f; color: white; padding: 6px 18px; border-radius: 8px; font-size: 11px; font-weight: 800; transition: 0.3s; }
+        .badge-year { background: #ff014f; color: white; padding: 6px 18px; border-radius: 8px; font-size: 12px; font-weight: 900; transition: 0.3s; display: inline-block; margin-top: 15px; }
 
-        /* --- AUTHORITY SMART SWAP --- */
-        .testi-slide { display: none; width: 100%; opacity: 0; position: absolute; top: 0; left: 0; }
-        .testi-slide.active { display: flex; animation: slideInFade 0.6s ease forwards; opacity: 1; position: relative; }
-        @keyframes slideInFade { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        /* Matrix Fill Animation */
+        .skill-bar-fill { width: 0%; transition: width 2s cubic-bezier(0.1, 0, 0.2, 1); }
+
+        /* Carousel Authority */
+        .testi-slide { display: none; width: 100%; opacity: 0; }
+        .testi-slide.active { display: block; animation: slideUpFade 0.8s ease forwards; opacity: 1; }
+        @keyframes slideUpFade { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         
         .dot { height: 12px; width: 12px; background: #d1d9e6; border-radius: 50%; cursor: pointer; transition: 0.3s; }
-        .dot.active { background: #ff014f; width: 40px; border-radius: 6px; }
+        .dot.active { background: #ff014f; width: 45px; border-radius: 6px; }
 
-        /* --- MARQUEE RUNNING --- */
+        /* Marquee */
         @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .marquee-container { overflow: hidden; white-space: nowrap; position: relative; width: 100%; padding: 50px 0; }
-        .marquee-content { display: flex; width: max-content; animation: marquee 30s linear infinite; }
-        .marquee-content:hover { animation-play-state: paused; }
+        .animate-marquee { display: flex; width: max-content; animation: marquee 30s linear infinite; }
 
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1s ease; }
         .reveal.active { opacity: 1; transform: translateY(0); }
-        .skill-bar-fill { width: 0%; transition: width 1.5s ease-out; }
         #btn-back-to-top { display: none; }
-        .typed-cursor { color: #ff014f; }
     </style>
 </head>
-<body class="bg-lightBg text-slate-800 dark:bg-darkBg dark:text-slate-200 overflow-x-hidden leading-relaxed">
+<body class="overflow-x-hidden">
 
-    <!-- Scroll Top -->
-    <button id="btn-back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-10 left-10 z-[1200] inbio-btn p-5 rounded-full text-primary shadow-2xl active:scale-90 transition-all">
-        <i data-lucide="arrow-up" size="24"></i>
+    <!-- Floating UI -->
+    <button id="btn-back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-10 left-10 z-[1200] inbio-btn p-5 rounded-full text-primary shadow-2xl active:scale-90">
+        <i data-lucide="arrow-up"></i>
     </button>
+    <a href="https://wa.me/6282318885200" target="_blank" class="fixed bottom-10 right-10 z-[1200] inbio-btn p-5 rounded-full text-green-500 shadow-2xl active:scale-90">
+        <i data-lucide="message-circle"></i>
+    </a>
 
-    <!-- Header Nav -->
-    <nav class="fixed top-0 w-full z-50 bg-inherit border-b border-black/5 dark:border-white/5 h-20">
-        <div class="max-w-7xl mx-auto px-6 h-full flex justify-between items-center">
-            <div class="flex items-center space-x-4">
-                <div class="inbio-btn p-1 rounded-full border-2 border-primary overflow-hidden w-10 h-10">
+    <!-- Navigation Header -->
+    <nav class="fixed top-0 w-full z-50 bg-inherit border-b border-black/5 h-22 flex items-center">
+        <div class="max-w-7xl mx-auto px-6 w-full flex justify-between items-center">
+            <div class="flex items-center gap-4 py-4">
+                <div class="w-11 h-11 rounded-full border-2 border-primary p-0.5 overflow-hidden shadow-xl shadow-primary/20">
                     <img src="logo.png" onerror="this.src='https://via.placeholder.com/100'" class="w-full h-full object-cover rounded-full">
                 </div>
-                <span class="text-xl font-black dark:text-white text-slate-900 uppercase">MYCV</span>
+                <span class="font-black text-2xl tracking-tighter uppercase dark:text-white">MYCV</span>
             </div>
-            
-            <div class="hidden lg:flex items-center space-x-10">
-                <a href="#home" class="text-[11px] font-black hover:text-primary transition-colors uppercase" data-i18n="nav-home">Home</a>
-                <a href="#resume" class="text-[11px] font-black hover:text-primary transition-colors uppercase" data-i18n="nav-resume">Resume</a>
-                <a href="#portfolio-hub" class="text-[11px] font-black hover:text-primary transition-colors uppercase" data-i18n="nav-portfolio">Portfolio</a>
-                <a href="#contact" class="text-[11px] font-black hover:text-primary transition-colors uppercase" data-i18n="nav-contact">Contact</a>
+            <div class="hidden lg:flex items-center gap-10 text-[11px] font-black uppercase">
+                <a href="#home" class="hover:text-primary transition-colors">Home</a>
+                <a href="#resume" class="hover:text-primary transition-colors">Resume</a>
+                <a href="#portfolio-hub" class="hover:text-primary transition-colors">Portfolio</a>
+                <a href="#contact" class="hover:text-primary transition-colors">Contact</a>
                 
                 <div class="flex inbio-btn p-1 rounded-xl ml-4">
-                    <button onclick="changeLang('en')" id="l-en" class="px-3 py-1 text-[9px] font-black rounded-lg text-primary">EN</button>
-                    <button onclick="changeLang('id')" id="l-id" class="px-3 py-1 text-[9px] font-black rounded-lg text-slate-400">ID</button>
+                    <button onclick="changeLang('en')" id="l-en" class="px-3 py-1 text-[9px] font-black rounded-lg text-slate-400">EN</button>
+                    <button onclick="changeLang('id')" id="l-id" class="px-3 py-1 text-[9px] font-black rounded-lg text-primary">ID</button>
                 </div>
-                <button onclick="toggleTheme()" class="inbio-btn p-3 rounded-full ml-4"><i data-lucide="sun" class="hidden dark:block text-yellow-400"></i><i data-lucide="moon" class="block dark:hidden"></i></button>
+                <button onclick="toggleTheme()" class="inbio-btn p-3 rounded-full ml-4 shadow-xl"><i data-lucide="moon" class="dark:hidden"></i><i data-lucide="sun" class="hidden dark:block"></i></button>
             </div>
             <button onclick="toggleDrawer()" class="lg:hidden inbio-btn p-3 rounded-xl text-primary"><i data-lucide="menu"></i></button>
         </div>
     </nav>
 
-    <!-- Drawer Mobile -->
-    <div id="side-drawer" class="fixed top-0 left-0 h-full w-[80%] max-w-[300px] z-[70] p-10 shadow-2xl bg-lightBg dark:bg-darkCard transition-transform duration-500 -translate-x-full">
-        <div class="flex justify-between items-center mb-16"><span class="text-xl font-black uppercase">MYCV</span><button onclick="toggleDrawer()" class="inbio-btn p-3 rounded-full text-primary"><i data-lucide="x"></i></button></div>
-        <div class="flex flex-col space-y-8 text-left font-black text-sm uppercase tracking-widest">
-            <a href="#home" onclick="toggleDrawer()" data-i18n="nav-home">Home</a>
-            <a href="#resume" onclick="toggleDrawer()" data-i18n="nav-resume">Resume</a>
-            <a href="#portfolio-hub" onclick="toggleDrawer()" data-i18n="nav-portfolio">Portfolio</a>
-            <a href="#contact" onclick="toggleDrawer()" data-i18n="nav-contact">Contact</a>
+    <!-- Side Drawer -->
+    <div id="side-drawer" class="fixed top-0 left-0 h-full w-3/4 z-[100] bg-lightBg dark:bg-darkCard p-12 shadow-2xl transition-transform -translate-x-full duration-500">
+        <div class="flex justify-between items-center mb-20"><span class="font-black uppercase tracking-tighter text-xl">DEDE CV</span><button onclick="toggleDrawer()"><i data-lucide="x"></i></button></div>
+        <div class="flex flex-col gap-10 font-black uppercase text-sm">
+            <a href="#home" onclick="toggleDrawer()">Home</a>
+            <a href="#resume" onclick="toggleDrawer()">Resume</a>
+            <a href="#portfolio-hub" onclick="toggleDrawer()">Portfolio</a>
+            <a href="#contact" onclick="toggleDrawer()">Contact</a>
         </div>
     </div>
 
     <!-- Hero Section -->
-    <section id="home" class="pt-56 pb-24 px-6 max-w-7xl mx-auto reveal active">
-        <div class="text-center lg:text-left space-y-8">
-            <span class="text-primary text-sm font-black uppercase tracking-[6px]" data-i18n="hero-tag">16+ YEARS OF PROFESSIONAL EXCELLENCE</span>
-            <h1 class="text-5xl md:text-8xl lg:text-[7.5rem] font-black dark:text-white text-slate-900 leading-tight">
-                Hello, I'm <span class="text-primary uppercase">DEDE.</span><br>
-                <span id="typed" class="text-primary uppercase text-3xl md:text-6xl"></span>
+    <section id="home" class="pt-60 pb-20 px-6 max-w-7xl mx-auto reveal active">
+        <div class="text-center lg:text-left">
+            <p class="text-primary font-bold uppercase tracking-[6px] mb-8">16+ Years of Professional Excellence</p>
+            <h1 class="text-5xl md:text-[8rem] font-black mb-10 leading-none tracking-tighter dark:text-white">
+                <span id="hero-salute">Halo, saya</span> <span class="text-primary">DEDE</span><span class="text-black dark:text-white">.</span><br>
+                <span id="typed" class="text-primary uppercase"></span>
             </h1>
-            <p class="text-lg md:text-xl leading-relaxed text-slate-500 dark:text-slate-400 max-w-4xl font-semibold mx-auto lg:mx-0" data-i18n="hero-desc">
-                Strategic IT Manager orchestrating national banking ecosystems, optimizing workforce technology, and ensuring absolute regulatory data compliance.
+            <p class="text-xl md:text-2xl max-w-4xl text-slate-500 dark:text-slate-400 font-bold mb-14 leading-relaxed" id="hero-desc">
+                Strategic IT Manager mengorkestrasi ekosistem perbankan nasional, mengoptimalkan teknologi tenaga kerja, dan memastikan kepatuhan regulasi data mutlak.
             </p>
-            <div class="flex pt-10 justify-center lg:justify-start">
-                <button onclick="playResume()" class="inbio-btn px-12 py-6 rounded-2xl text-primary font-black uppercase text-xs flex items-center gap-4 group shadow-xl">
-                    <i data-lucide="volume-2" class="group-hover:animate-pulse"></i> <span data-i18n="btn-audio">My Resume (Audio)</span>
-                </button>
+            <div class="flex justify-center lg:justify-start">
+                <button class="inbio-btn px-14 py-7 rounded-2xl text-primary font-black uppercase text-xs shadow-2xl active:scale-95 transition-all">My Resume (Audio)</button>
             </div>
         </div>
     </section>
 
-    <!-- Shortcuts Dashboard -->
-    <div class="max-w-7xl mx-auto px-6 mb-24 reveal">
-        <div class="flex flex-wrap justify-center gap-6">
-            <button onclick="jumpTo('portfolio-hub')" class="inbio-btn px-12 py-6 rounded-2xl font-black text-xs uppercase" data-i18n="btn-consult">Consultancy Hub</button>
-            <button onclick="jumpTo('sec-banking')" class="inbio-btn px-12 py-6 rounded-2xl font-black text-xs uppercase" data-i18n="btn-banking">Bank Ops</button>
-            <button onclick="jumpTo('sec-matrix')" class="inbio-btn px-12 py-6 rounded-2xl font-black text-xs uppercase" data-i18n="btn-matrix">Expertise Matrix</button>
-        </div>
-    </div>
-
-    <!-- Career Resume (Inbio Architecture) -->
-    <section id="resume" class="py-24 px-6 max-w-7xl mx-auto border-t border-black/5 reveal">
-        <div class="text-center mb-24 uppercase"><h2 class="text-4xl md:text-7xl font-black tracking-tighter" data-i18n="resume-title">My Resume</h2></div>
-
-        <div class="max-w-4xl mx-auto tl-wrapper">
-            <div class="tl-main-line"></div>
-
-            <!-- Block: Consultancy -->
-            <div id="sec-consultancy-resume" class="tl-item reveal">
-                <div class="tl-connector"></div>
-                <div class="tl-node"></div>
-                <div class="inbio-card p-10 md:p-14 rounded-[3.5rem] cursor-pointer" onclick="activateItem(this)">
-                    <div class="flex flex-col md:flex-row justify-between md:items-center mb-10 border-b border-black/5 pb-8">
-                        <div><h4 class="text-2xl font-black uppercase">Strategic Tech Consultant</h4><p class="text-primary text-[10px] font-bold uppercase mt-1">Independent Strategic Advisory</p></div>
-                        <div class="mt-4 md:mt-0"><span class="badge-year">2016 - 2026</span></div>
+    <!-- Resume Section -->
+    <section id="resume" class="py-32 border-t border-black/5 reveal">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h2 class="text-4xl md:text-[6rem] font-black uppercase tracking-tighter mb-24 dark:text-white" data-i18n="resume-title">My Resume</h2>
+            
+            <div class="axis-wrapper text-left">
+                <div class="tl-main-line"></div>
+                
+                <!-- SECTOR 1: STRATEGIC PROJECTS -->
+                <div id="sec-strategic" class="mb-44">
+                    <div class="sector-header-box">
+                        <h3 class="text-4xl font-black uppercase">Strategic Projects</h3>
+                        <p class="text-white/60 font-bold uppercase text-[10px] tracking-widest mt-2">Professional Advisory & Tech Orchestration</p>
                     </div>
-                    <ul class="space-y-8 text-left text-slate-500 font-bold">
-                        <li class="flex items-start"><span class="job-triangle mt-1.5 shrink-0"></span><p class="text-lg">Led national ESG data synthesis for G20 Bali Summit with 100% reporting accuracy.</p></li>
-                        <li class="flex items-start"><span class="job-triangle mt-1.5 shrink-0"></span><p class="text-lg">Architected Python-AI recruitment systems, increasing national HR efficiency by 90%.</p></li>
-                        <li class="flex items-start"><span class="job-triangle mt-1.5 shrink-0"></span><p class="text-lg">Strategic digital transformation partner for national media infrastructure scaling.</p></li>
-                    </ul>
+                    
+                    <div class="tl-item reveal">
+                        <div class="tl-connector"></div><div class="tl-node"></div>
+                        <div class="inbio-card p-12 cursor-pointer shadow-2xl" onclick="activateItem(this)">
+                            <h4 class="text-2xl font-black uppercase">Environmental ESG Dashboard</h4>
+                            <span class="badge-year">2022</span>
+                            <ul class="space-y-6 text-slate-500 font-bold text-base mt-8">
+                                <li class="flex items-start"><span class="job-triangle mt-2 shrink-0"></span>Merancang dashboard pelaporan data ESG nasional terintegrasi untuk kementerian nasional.</li>
+                                <li class="flex items-start"><span class="job-triangle mt-2 shrink-0"></span>Otomasi pipeline data kementerian untuk transparansi pelaporan internasional agenda G20 Bali.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tl-item reveal">
+                        <div class="tl-connector"></div><div class="tl-node"></div>
+                        <div class="inbio-card p-12 cursor-pointer shadow-2xl" onclick="activateItem(this)">
+                            <h4 class="text-2xl font-black uppercase">AI Assisted System Integration</h4>
+                            <span class="badge-year">2025 - 2026</span>
+                            <ul class="space-y-6 text-slate-500 font-bold text-base mt-8">
+                                <li class="flex items-start"><span class="job-triangle mt-2 shrink-0"></span>Implementasi filtrasi cerdas berbasis AI-Python untuk optimalisasi aliran data operasional nasional.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tl-item reveal">
+                        <div class="tl-connector"></div><div class="tl-node"></div>
+                        <div class="inbio-card p-12 cursor-pointer shadow-2xl" onclick="activateItem(this)">
+                            <h4 class="text-2xl font-black uppercase">Web & Digital Multimedia Hub</h4>
+                            <span class="badge-year">2018 - 2021</span>
+                            <ul class="space-y-6 text-slate-500 font-bold text-base mt-8">
+                                <li class="flex items-start"><span class="job-triangle mt-2 shrink-0"></span>Modernisasi infrastruktur web media nasional dengan arsitektur high-availability dan cloud system.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTOR 2: BANKING ENTERPRISE -->
+                <div id="sec-banking" class="mb-32">
+                    <div class="sector-header-box banking-box">
+                        <h3 class="text-4xl font-black uppercase">Banking Enterprise</h3>
+                        <p class="text-white font-bold uppercase text-[12px] mt-2">PT BANK MNC INTERNASIONAL TBK</p>
+                        <p class="text-white/80 font-black uppercase text-[10px] tracking-[2px] mt-1">IT GROUP - SYSTEM DEVELOPMENT & CARD CENTER SPECIALIST (2010 - 2016)</p>
+                    </div>
+                    
+                    <div class="tl-item reveal">
+                        <div class="tl-connector"></div><div class="tl-node"></div>
+                        <div class="inbio-card p-12 border-2 border-primary/5 shadow-2xl cursor-pointer" onclick="activateItem(this)">
+                            <h4 class="text-2xl font-black uppercase">Infrastructure Migration</h4>
+                            <span class="badge-year">2012</span>
+                            <ul class="space-y-6 text-slate-500 font-bold text-base mt-8">
+                                <li class="flex items-start"><span class="job-triangle mt-2 shrink-0"></span>Mengawal migrasi infrastruktur kritis nasional perbankan ke sistem kantor pusat terpadu.</li>
+                                <li class="flex items-start"><span class="job-triangle mt-2 shrink-0"></span>Memastikan status migrasi Zero Data Loss dan integritas operasional perbankan.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tl-item reveal">
+                        <div class="tl-connector"></div><div class="tl-node"></div>
+                        <div class="inbio-card p-12 border-2 border-primary/5 shadow-2xl cursor-pointer" onclick="activateItem(this)">
+                            <h4 class="text-2xl font-black uppercase">System Development Specialist</h4>
+                            <span class="badge-year">2012 - 2016</span>
+                            <ul class="space-y-6 text-slate-500 font-bold text-base mt-8">
+                                <li class="flex items-start"><span class="job-triangle mt-2 shrink-0"></span>Implementasi ekosistem SAP HCM dan integrasi portal Employee Self Service (ESS) nasional.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tl-item reveal">
+                        <div class="tl-connector"></div><div class="tl-node"></div>
+                        <div class="inbio-card p-12 border-2 border-primary/5 shadow-2xl cursor-pointer" onclick="activateItem(this)">
+                            <h4 class="text-2xl font-black uppercase">Card Center & ATM Switching</h4>
+                            <span class="badge-year">2010 - 2012</span>
+                            <ul class="space-y-6 text-slate-500 font-bold text-base mt-8">
+                                <li class="flex items-start"><span class="job-triangle mt-2 shrink-0"></span>Uptime 99,9% iSeries AS400 dan implementasi modul enkripsi HSM PayShield 9000.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tl-item reveal">
+                        <div class="tl-connector"></div><div class="tl-node"></div>
+                        <div class="inbio-card p-12 border-2 border-primary/5 shadow-2xl cursor-pointer" onclick="activateItem(this)">
+                            <h4 class="text-2xl font-black uppercase">Reporting Regulatory Automation</h4>
+                            <span class="badge-year">2010 - 2016</span>
+                            <ul class="space-y-6 text-slate-500 font-bold text-base mt-8">
+                                <li class="flex items-start"><span class="job-triangle mt-2 shrink-0"></span>Otomasi pelaporan mandatori LBU, SID, SKN sesuai standar kepatuhan Bank Indonesia.</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-            <!-- Block: Banking (IT Operations Target) -->
-            <div id="sec-banking" class="tl-item reveal">
-                <div class="tl-connector"></div>
-                <div class="tl-node"></div>
-                <div class="inbio-card p-10 md:p-14 rounded-[3.5rem] border-2 border-primary/10 shadow-2xl cursor-pointer" onclick="activateItem(this)">
-                    <div class="flex flex-col md:flex-row justify-between md:items-center mb-10 border-b border-black/5 pb-8">
-                        <div><h4 class="text-2xl font-black uppercase text-left">IT Operations Specialist</h4><p class="text-primary text-[10px] font-bold uppercase mt-1 text-left">PT Bank MNC Internasional Tbk</p></div>
-                        <div class="mt-4 md:mt-0"><span class="badge-year">2010 - 2016</span></div>
-                    </div>
-                    <ul class="space-y-8 text-left text-slate-500 font-bold">
-                        <li class="flex items-start"><span class="job-triangle mt-1.5 shrink-0"></span><p class="text-lg" data-i18n="res-2-1">Otomasi pelaporan mandatori LBU, SID, SKN untuk kepatuhan BI/OJK dengan nol deviasi teknis.</p></li>
-                        <li class="flex items-start"><span class="job-triangle mt-1.5 shrink-0"></span><p class="text-lg" data-i18n="res-2-2">Mengelola migrasi database tenaga kerja ke SAP HCM dan portal Employee Self Service (ESS).</p></li>
-                        <li class="flex items-start"><span class="job-triangle mt-1.5 shrink-0"></span><p class="text-lg" data-i18n="res-2-3">Menjamin uptime 99,9% untuk sistem core perbankan iSeries AS400 dan switching kartu ISO 8583.</p></li>
-                        <li class="flex items-start"><span class="job-triangle mt-1.5 shrink-0"></span><p class="text-lg" data-i18n="res-2-4">Verified expertise in Hardware Security Module (HSM) PayShield 9000 compliance.</p></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Hub (Separate Projects) -->
-    <section id="portfolio-hub" class="py-24 px-6 max-w-7xl mx-auto border-t border-black/5 reveal">
-        <div class="text-center mb-20 uppercase"><h2 class="text-3xl md:text-6xl font-black" data-i18n="portfolio-title">Consultancy Hub</h2></div>
-        <div class="flex flex-wrap justify-center gap-6 mb-16">
-            <button onclick="showTab('web')" id="t-web" class="inbio-btn px-10 py-5 rounded-2xl font-black uppercase text-[11px] tab-btn active">Web Design</button>
-            <button onclick="showTab('live')" id="t-live" class="inbio-btn px-10 py-5 rounded-2xl font-black uppercase text-[11px] tab-btn">Live Stream</button>
-            <button onclick="showTab('seo')" id="t-seo" class="inbio-btn px-10 py-5 rounded-2xl font-black uppercase text-[11px] tab-btn">SEO & Traffic</button>
-        </div>
-        <div id="tab-content" class="inbio-card p-10 md:p-16 rounded-[4.5rem] text-left grid grid-cols-1 lg:grid-cols-2 gap-16 min-h-[480px]">
-            <!-- Swapped Content -->
         </div>
     </section>
 
     <!-- Professional Matrix -->
-    <section id="sec-matrix" class="py-32 px-6 max-w-7xl mx-auto border-t border-black/5 reveal">
-        <div class="text-center mb-24 uppercase"><h2 class="text-4xl md:text-7xl font-black tracking-tighter" data-i18n="nav-skills">Professional Matrix</h2></div>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            <div class="space-y-12 skill-card">
-                <div class="space-y-5">
-                    <div class="flex justify-between text-[11px] font-black uppercase text-slate-500"><span>Governance & Compliance</span><span>100%</span></div>
-                    <div class="h-4 w-full inbio-input rounded-full p-1 overflow-hidden"><div class="h-full bg-gradient-to-r from-primary to-orange-400 rounded-full skill-bar-fill" data-target="100%"></div></div>
+    <section id="sec-matrix" class="py-32 px-6 border-t border-black/5 reveal">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-4xl md:text-[5rem] font-black uppercase tracking-tighter mb-24 dark:text-white">Expertise Matrix</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-20 px-8">
+                <div class="space-y-12">
+                    <div class="space-y-4">
+                        <div class="flex justify-between font-black uppercase text-xs text-slate-500 dark:text-slate-400"><span>Governance & Compliance</span><span>100%</span></div>
+                        <div class="h-3 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden shadow-inner"><div class="h-full bg-primary skill-bar-fill shadow-lg" data-target="100%"></div></div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex justify-between font-black uppercase text-xs text-slate-500 dark:text-slate-400"><span>Banking Core (AS400/ISO)</span><span>98%</span></div>
+                        <div class="h-3 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden shadow-inner"><div class="h-full bg-primary skill-bar-fill shadow-lg" data-target="98%"></div></div>
+                    </div>
                 </div>
-                <div class="space-y-5">
-                    <div class="flex justify-between text-[11px] font-black uppercase text-slate-500"><span>Banking Systems (AS400)</span><span>98%</span></div>
-                    <div class="h-4 w-full inbio-input rounded-full p-1 overflow-hidden"><div class="h-full bg-gradient-to-r from-primary to-orange-400 rounded-full skill-bar-fill" data-target="98%"></div></div>
-                </div>
-            </div>
-            <div class="space-y-12 skill-card">
-                <div class="space-y-5">
-                    <div class="flex justify-between text-[11px] font-black uppercase text-slate-500"><span>Workforce Tech (SAP)</span><span>95%</span></div>
-                    <div class="h-4 w-full inbio-input rounded-full p-1 overflow-hidden"><div class="h-full bg-gradient-to-r from-primary to-orange-400 rounded-full skill-bar-fill" data-target="95%"></div></div>
-                </div>
-                <div class="space-y-5">
-                    <div class="flex justify-between text-[11px] font-black uppercase text-slate-500"><span>Multimedia Orchestration</span><span>94%</span></div>
-                    <div class="h-4 w-full inbio-input rounded-full p-1 overflow-hidden"><div class="h-full bg-gradient-to-r from-primary to-orange-400 rounded-full skill-bar-fill" data-target="94%"></div></div>
+                <div class="space-y-12">
+                    <div class="space-y-4">
+                        <div class="flex justify-between font-black uppercase text-xs text-slate-500 dark:text-slate-400"><span>Workforce Tech (SAP)</span><span>95%</span></div>
+                        <div class="h-3 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden shadow-inner"><div class="h-full bg-primary skill-bar-fill shadow-lg" data-target="95%"></div></div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex justify-between font-black uppercase text-xs text-slate-500 dark:text-slate-400"><span>Cyber Security Protocol</span><span>92%</span></div>
+                        <div class="h-3 w-full bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden shadow-inner"><div class="h-full bg-primary skill-bar-fill shadow-lg" data-target="92%"></div></div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Authority Hub (Matched to Portfolio UI) -->
-    <section id="testimonials" class="py-24 px-6 max-w-7xl mx-auto border-t border-black/5 reveal">
-        <div class="text-center mb-16 uppercase"><h2 class="text-3xl md:text-6xl font-black" data-i18n="testi-title">Authority Hub</h2></div>
-        <div class="max-w-5xl mx-auto relative px-4 min-h-[500px]">
-            <div id="testi-container" class="relative w-full h-full overflow-hidden">
-                <!-- Slide 1 -->
-                <div id="testi-1" class="testi-slide active flex flex-col md:flex-row items-center gap-12 inbio-card p-10 md:p-16 rounded-[4.5rem] absolute inset-0">
-                    <div class="flex-1 space-y-8 text-center md:text-left">
-                        <div class="flex justify-center md:justify-start gap-1 text-yellow-500"><i data-lucide="star" fill="currentColor"></i><i data-lucide="star" fill="currentColor"></i><i data-lucide="star" fill="currentColor"></i><i data-lucide="star" fill="currentColor"></i><i data-lucide="star" fill="currentColor"></i></div>
-                        <p class="text-xl md:text-3xl dark:text-slate-300 text-slate-700 is-italic font-bold leading-snug">"Precision in synthesizing complex ESG data established a new transparency standard for our national platform during G20 Bali."</p>
-                        <div>
-                            <h6 class="font-black uppercase text-lg text-slate-800 dark:text-white">CEO ENVIRA ID</h6>
-                            <p class="text-[10px] text-primary font-black uppercase tracking-widest">National Data Partner</p>
+    <!-- Authority Hub (Executive Portfolio Clone) -->
+    <section id="authority" class="py-32 border-t border-black/5 reveal">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl md:text-[5rem] font-black uppercase text-center mb-32 tracking-tighter dark:text-white">Authority Hub</h2>
+            <div class="max-w-6xl mx-auto relative min-h-[550px]">
+                <div id="testi-1" class="testi-slide active inbio-card p-14 md:p-24 shadow-2xl border border-white/10">
+                    <div class="flex flex-col md:flex-row items-center gap-16">
+                        <div class="flex-1 space-y-12 text-center md:text-left">
+                            <div class="flex justify-center md:justify-start gap-1 text-yellow-500"><i data-lucide="star" fill="currentColor" size="24"></i><i data-lucide="star" fill="currentColor" size="24"></i><i data-lucide="star" fill="currentColor" size="24"></i><i data-lucide="star" fill="currentColor" size="24"></i><i data-lucide="star" fill="currentColor" size="24"></i></div>
+                            <p class="text-2xl md:text-4xl font-bold italic leading-snug dark:text-slate-200">"Excellent orchestration during the national system migration. The technical strategy ensured 100% data integrity for the entire banking network."</p>
+                            <div>
+                                <h6 class="font-black uppercase text-xl text-slate-800 dark:text-white">HEAD OF IT GROUP</h6>
+                                <p class="text-[11px] text-primary font-black uppercase tracking-widest">PT Bank MNC Internasional Tbk</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- Slide 2 -->
-                <div id="testi-2" class="testi-slide flex flex-col md:flex-row items-center gap-12 inbio-card p-10 md:p-16 rounded-[4.5rem] absolute inset-0">
-                    <div class="flex-1 space-y-8 text-center md:text-left">
-                        <div class="flex justify-center md:justify-start gap-1 text-yellow-500"><i data-lucide="star" fill="currentColor"></i><i data-lucide="star" fill="currentColor"></i><i data-lucide="star" fill="currentColor"></i><i data-lucide="star" fill="currentColor"></i><i data-lucide="star" fill="currentColor"></i></div>
-                        <p class="text-xl md:text-3xl dark:text-slate-300 text-slate-700 is-italic font-bold leading-snug">"Successful orchestration of multimedia infrastructure, enabling seamless national expansion and zero latency streaming."</p>
-                        <div>
-                            <h6 class="font-black uppercase text-lg text-slate-800 dark:text-white">MEDIA DIRECTOR</h6>
-                            <p class="text-[10px] text-primary font-black uppercase tracking-widest">HAS Creative Multimedia</p>
+                <div id="testi-2" class="testi-slide inbio-card p-14 md:p-24 shadow-2xl border border-white/10">
+                    <div class="flex flex-col md:flex-row items-center gap-16">
+                        <div class="flex-1 space-y-12 text-center md:text-left">
+                            <div class="flex justify-center md:justify-start gap-1 text-yellow-500"><i data-lucide="star" fill="currentColor" size="24"></i><i data-lucide="star" fill="currentColor" size="24"></i><i data-lucide="star" fill="currentColor" size="24"></i><i data-lucide="star" fill="currentColor" size="24"></i><i data-lucide="star" fill="currentColor" size="24"></i></div>
+                            <p class="text-2xl md:text-4xl font-bold italic leading-snug dark:text-slate-200">"The synthesis of complex ESG data for the G20 Bali Summit set a new transparency standard for our national reporting platform."</p>
+                            <div>
+                                <h6 class="font-black uppercase text-xl text-slate-800 dark:text-white">CEO ENVIRA ID</h6>
+                                <p class="text-[11px] text-primary font-black uppercase tracking-widest">National Data Partner</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- Slide 3 -->
-                <div id="testi-3" class="testi-slide flex flex-col md:flex-row items-center gap-12 inbio-card p-10 md:p-16 rounded-[4.5rem] absolute inset-0">
-                    <div class="flex-1 space-y-8 text-center md:text-left">
-                        <div class="flex justify-center md:justify-start gap-1 text-yellow-500"><i data-lucide="star" fill="currentColor"></i><i data-lucide="star" fill="currentColor"></i><i data-lucide="star" fill="currentColor"></i><i data-lucide="star" fill="currentColor"></i><i data-lucide="star" fill="currentColor"></i></div>
-                        <p class="text-xl md:text-3xl dark:text-slate-300 text-slate-700 is-italic font-bold leading-snug">"Deep expertise in PayShield 9000 compliance, securing absolute data integrity for mission-critical perbankan transactions."</p>
-                        <div>
-                            <h6 class="font-black uppercase text-lg text-slate-800 dark:text-white">COMPLIANCE LEAD</h6>
-                            <p class="text-[10px] text-primary font-black uppercase tracking-widest">Global Security Vendor</p>
+                <div id="testi-3" class="testi-slide inbio-card p-14 md:p-24 shadow-2xl border border-white/10">
+                    <div class="flex flex-col md:flex-row items-center gap-16">
+                        <div class="flex-1 space-y-12 text-center md:text-left">
+                            <div class="flex justify-center md:justify-start gap-1 text-yellow-500"><i data-lucide="star" fill="currentColor" size="24"></i><i data-lucide="star" fill="currentColor" size="24"></i><i data-lucide="star" fill="currentColor" size="24"></i><i data-lucide="star" fill="currentColor" size="24"></i><i data-lucide="star" fill="currentColor" size="24"></i></div>
+                            <p class="text-2xl md:text-4xl font-bold italic leading-snug dark:text-slate-200">"Professional execution of multimedia infrastructure scaling, achieving zero-latency streaming on a national broadcast level."</p>
+                            <div>
+                                <h6 class="font-black uppercase text-xl text-slate-800 dark:text-white">MEDIA DIRECTOR</h6>
+                                <p class="text-[11px] text-primary font-black uppercase tracking-widest">HAS Creative Multimedia</p>
+                            </div>
                         </div>
                     </div>
+                </div>
+                <div id="testi-4" class="testi-slide inbio-card p-14 md:p-24 shadow-2xl border border-white/10">
+                    <div class="flex flex-col md:flex-row items-center gap-16">
+                        <div class="flex-1 space-y-12 text-center md:text-left">
+                            <div class="flex justify-center md:justify-start gap-1 text-yellow-500"><i data-lucide="star" fill="currentColor" size="24"></i><i data-lucide="star" fill="currentColor" size="24"></i><i data-lucide="star" fill="currentColor" size="24"></i><i data-lucide="star" fill="currentColor" size="24"></i><i data-lucide="star" fill="currentColor" size="24"></i></div>
+                            <p class="text-2xl md:text-4xl font-bold italic leading-snug dark:text-slate-200">"Proactive compliance management in card center operations, ensuring absolute security standards for financial transactions."</p>
+                            <div>
+                                <h6 class="font-black uppercase text-xl text-slate-800 dark:text-white">SECURITY AUDITOR</h6>
+                                <p class="text-[11px] text-primary font-black uppercase tracking-widest">Compliance Systems HUB</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-center gap-5 mt-20 relative z-30">
+                    <span onclick="setTesti(1)" id="dot-1" class="dot active"></span>
+                    <span onclick="setTesti(2)" id="dot-2" class="dot"></span>
+                    <span onclick="setTesti(3)" id="dot-3" class="dot"></span>
+                    <span onclick="setTesti(4)" id="dot-4" class="dot"></span>
                 </div>
             </div>
-            <div class="absolute -bottom-10 left-1/2 -translate-x-1/2 flex gap-3">
-                <span onclick="setTesti(1)" id="dot-1" class="dot active"></span>
-                <span onclick="setTesti(2)" id="dot-2" class="dot"></span>
-                <span onclick="setTesti(3)" id="dot-3" class="dot"></span>
+        </div>
+    </section>
+
+    <!-- Portfolio Hub -->
+    <section id="portfolio-hub" class="py-24 border-t border-black/5 bg-white/10 reveal">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-3xl md:text-[5rem] font-black uppercase text-center mb-16 tracking-tighter dark:text-white">Consultancy Hub</h2>
+            <div class="flex flex-wrap justify-center gap-5 mb-20">
+                <button onclick="showTab('web')" id="t-web" class="inbio-btn px-10 py-5 rounded-2xl font-black uppercase text-[10px] active">Web Design</button>
+                <button onclick="showTab('live')" id="t-live" class="inbio-btn px-10 py-5 rounded-2xl font-black uppercase text-[10px]">Live Stream</button>
+                <button onclick="showTab('seo')" id="t-seo" class="inbio-btn px-10 py-5 rounded-2xl font-black uppercase text-[10px]">SEO Traffic</button>
+                <button onclick="showTab('agency')" id="t-agency" class="inbio-btn px-10 py-5 rounded-2xl font-black uppercase text-[10px]">Digital Agency</button>
             </div>
+            <div id="tab-content" class="inbio-card p-14 md:p-24 min-h-[480px]"></div>
         </div>
     </section>
 
     <!-- Marquee -->
-    <section class="py-20 border-y border-black/5 bg-white/30 dark:bg-black/10 marquee-container reveal">
-        <div class="marquee-content items-center gap-32">
-            <div class="flex items-center gap-32 px-12">
-                <div class="w-48 h-16 flex items-center justify-center font-black text-slate-300 dark:text-slate-700 uppercase text-3xl hover:text-primary transition-all">MNC BANK</div>
-                <div class="w-48 h-16 flex items-center justify-center font-black text-slate-300 dark:text-slate-700 uppercase text-3xl hover:text-primary transition-all">ENVIRA ID</div>
-                <div class="w-48 h-16 flex items-center justify-center font-black text-slate-300 dark:text-slate-700 uppercase text-3xl hover:text-primary transition-all">G20 BALI</div>
-                <div class="w-48 h-16 flex items-center justify-center font-black text-slate-300 dark:text-slate-700 uppercase text-3xl hover:text-primary transition-all">HAS CREATIVE</div>
-            </div>
-            <div class="flex items-center gap-32 px-12">
-                <div class="w-48 h-16 flex items-center justify-center font-black text-slate-300 dark:text-slate-700 uppercase text-3xl hover:text-primary transition-all">MNC BANK</div>
-                <div class="w-48 h-16 flex items-center justify-center font-black text-slate-300 dark:text-slate-700 uppercase text-3xl hover:text-primary transition-all">ENVIRA ID</div>
-                <div class="w-48 h-16 flex items-center justify-center font-black text-slate-300 dark:text-slate-700 uppercase text-3xl hover:text-primary transition-all">G20 BALI</div>
-                <div class="w-48 h-16 flex items-center justify-center font-black text-slate-300 dark:text-slate-700 uppercase text-3xl hover:text-primary transition-all">HAS CREATIVE</div>
-            </div>
+    <section class="py-20 border-y border-black/5 bg-white marquee-container overflow-hidden">
+        <div class="animate-marquee items-center gap-40 text-slate-300 font-black uppercase text-5xl">
+            <span>MNC BANK</span><span>ENVIRA ID</span><span>G20 BALI</span><span>HAS CREATIVE</span><span>THALES</span><span>SAP</span>
+            <span>MNC BANK</span><span>ENVIRA ID</span><span>G20 BALI</span><span>HAS CREATIVE</span><span>THALES</span><span>SAP</span>
         </div>
     </section>
 
-    <!-- Contact Form Section -->
-    <section id="contact" class="py-32 px-6 max-w-7xl mx-auto border-t border-black/5 reveal">
-        <div class="text-center mb-24 uppercase"><h2 class="text-4xl md:text-7xl font-black tracking-tighter" data-i18n="contact-title">Strategic Partnership</h2></div>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 px-6">
-            <div class="text-left space-y-12">
-                <h3 class="text-4xl font-black uppercase leading-tight" data-i18n="contact-h3">Ready to Orchestrate Your Project?</h3>
-                <p class="text-lg font-bold text-slate-500 leading-relaxed" data-i18n="contact-p">Submit details for high-stakes technical consulting, mission-critical systems, or strategic digital scaling.</p>
-                <div class="inbio-card p-10 rounded-[3rem] border border-primary/10 group hover:border-primary transition-all relative overflow-hidden active:scale-95">
-                    <div class="absolute inset-0 bg-white/40 dark:bg-black/40 backdrop-blur-sm flex items-center justify-center z-10 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <a href="mailto:mrdhex@gmail.com?subject=Strategic%20Access%20Request" class="bg-primary text-white px-8 py-3 rounded-xl font-black text-xs uppercase shadow-xl">Request Unlock</a>
+    <!-- Strategic Partnership -->
+    <section id="contact" class="py-32 px-6 max-w-7xl mx-auto reveal">
+        <h2 class="text-4xl md:text-[7.5rem] font-black uppercase text-center mb-32 leading-none tracking-tighter dark:text-white">Connect</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-24">
+            <div class="space-y-12">
+                <h3 class="text-5xl font-black uppercase leading-tight dark:text-white">Ready to Orchestrate Your Vision?</h3>
+                <p class="text-xl font-bold text-slate-500 dark:text-slate-400">Hubungi untuk konsultasi teknis tingkat tinggi, sistem kritis, atau akselerasi digital strategis.</p>
+                
+                <div class="inbio-card p-14 flex items-center gap-8 relative group overflow-hidden active:scale-95 transition-transform">
+                    <div class="absolute inset-0 bg-white/70 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-10 text-center">
+                        <a href="mailto:mrdhex@gmail.com?subject=Strategic%20Access%20Request" class="bg-primary text-white px-10 py-4 rounded-2xl font-black uppercase text-[11px] shadow-xl">Email mrdhex@gmail.com to Unlock</a>
                     </div>
-                    <div class="flex items-center gap-6">
-                        <i data-lucide="lock" size="42" class="text-primary"></i>
-                        <div class="flex-1">
-                            <p class="font-black text-xs uppercase mb-1" data-i18n="locked-title">DIRECT ACCESS PROTECTED</p>
-                            <p class="text-[11px] text-slate-500 font-bold" data-i18n="locked-desc">Email <span class="text-primary underline">mrdhex@gmail.com</span> to request contact access.</p>
-                        </div>
+                    <i data-lucide="lock" class="text-primary w-14 h-14"></i>
+                    <div>
+                        <p class="font-black text-xs uppercase mb-3 tracking-[3px] dark:text-white">DIRECT ACCESS PROTECTED</p>
+                        <p class="text-sm text-slate-500 font-black italic">Request contact via formal email protocol</p>
                     </div>
                 </div>
             </div>
-            <div class="inbio-card p-10 md:p-14 rounded-[4rem]">
-                <form class="space-y-8 text-left">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div class="space-y-4"><label class="text-[10px] font-black text-slate-500 uppercase">FULL NAME</label><input type="text" class="w-full inbio-input p-6 rounded-2xl outline-none text-xs font-bold"></div>
-                        <div class="space-y-4"><label class="text-[10px] font-black text-slate-500 uppercase">PHONE NUMBER</label><input type="text" class="w-full inbio-input p-6 rounded-2xl outline-none text-xs font-bold"></div>
+            <div class="inbio-card p-12 md:p-20">
+                <form class="space-y-10" onSubmit="e => e.preventDefault()">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        <div class="space-y-3"><label class="text-[10px] font-black uppercase opacity-60 dark:text-white">Nama Lengkap</label><input type="text" class="w-full inbio-input p-6 rounded-2xl outline-none font-bold"></div>
+                        <div class="space-y-3"><label class="text-[10px] font-black uppercase opacity-60 dark:text-white">Perusahaan</label><input type="text" class="w-full inbio-input p-6 rounded-2xl outline-none font-bold"></div>
                     </div>
-                    <div class="space-y-4"><label class="text-[10px] font-black text-slate-500 uppercase">MESSAGE</label><textarea rows="5" class="w-full inbio-input p-6 rounded-[3rem] outline-none text-xs font-bold"></textarea></div>
-                    <button type="submit" class="w-full inbio-btn py-7 rounded-2xl text-primary font-black uppercase text-xs shadow-xl active:scale-95 transition-all">Submit Proposal</button>
+                    <div class="space-y-3"><label class="text-[10px] font-black uppercase opacity-60 dark:text-white">Pesan Strategis</label><textarea rows="6" class="w-full inbio-input p-6 rounded-2xl outline-none font-bold"></textarea></div>
+                    <button class="w-full inbio-btn py-7 rounded-3xl text-primary font-black uppercase text-xs shadow-2xl">Submit Proposal</button>
                 </form>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-20 text-center bg-[#f1f5f9] dark:bg-[#0d0f13] border-t border-black/10">
+    <footer class="py-24 text-center border-t border-black/5 bg-[#ecf0f3] dark:bg-[#1a1d23]">
         <div class="flex flex-col items-center gap-12">
-            <img src="logo.png" onerror="this.src='https://via.placeholder.com/120'" class="w-24 h-24 rounded-full border-4 border-white shadow-2xl inbio-btn p-1 object-cover">
+            <div class="w-28 h-24 rounded-full inbio-btn p-2 overflow-hidden shadow-2xl">
+                <img src="logo.png" onerror="this.src='https://via.placeholder.com/120'" class="w-full h-full object-cover rounded-full">
+            </div>
             <div class="space-y-6">
-                <p class="text-[11px] font-black text-slate-400 uppercase tracking-widest leading-none">ZERO DATA LOSS | COMPLIANCE VERIFIED | REPORTING AUTOMATION</p>
-                <div class="pt-4 border-t border-black/5">
-                    <p class="text-sm font-black text-slate-600 dark:text-slate-400 uppercase">Copyright (C) 2026. All Rights Reserved.</p>
-                    <p class="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest mt-2">Strategic IT & Workforce Technology Manager</p>
-                </div>
+                <p class="text-[12px] font-black text-slate-400 uppercase tracking-[8px]">ZERO DATA LOSS | COMPLIANCE VERIFIED | REPORTING AUTOMATION</p>
+                <p class="text-xs font-bold opacity-30 uppercase tracking-[4px] dark:text-white">© 2026 Dede Hardiyanto. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
@@ -368,19 +497,24 @@
     <script>
         lucide.createIcons();
 
-        const handleInteraction = () => {
-            document.querySelectorAll('.reveal').forEach(r => {
-                if (r.getBoundingClientRect().top < window.innerHeight - 50) r.classList.add('active');
-            });
-            document.querySelectorAll('.skill-bar-fill').forEach(bar => {
-                if (bar.getBoundingClientRect().top < window.innerHeight - 50) {
-                    bar.style.width = bar.getAttribute('data-target');
+        // Reveal Logic
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { 
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    if(entry.target.id === 'sec-matrix') {
+                        document.querySelectorAll('.skill-bar-fill').forEach(bar => {
+                            bar.style.width = bar.getAttribute('data-target');
+                        });
+                    }
                 }
             });
-            document.getElementById('btn-back-to-top').style.display = (window.scrollY > 1000) ? 'block' : 'none';
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal, #sec-matrix').forEach(el => observer.observe(el));
+
+        window.onscroll = () => {
+            document.getElementById('btn-back-to-top').style.display = (window.scrollY > 800) ? 'block' : 'none';
         };
-        window.addEventListener('scroll', handleInteraction);
-        window.addEventListener('load', handleInteraction);
 
         function activateItem(card) {
             document.querySelectorAll('.tl-item').forEach(i => i.classList.remove('active-item'));
@@ -395,84 +529,71 @@
             if(card) activateItem(card);
         }
 
-        // Language Engine
-        const i18n = {
-            en: {
-                "nav-home": "Home", "nav-resume": "Resume", "nav-portfolio": "Portfolio", "nav-contact": "Contact",
-                "hero-tag": "16+ YEARS OF PROFESSIONAL EXCELLENCE",
-                "hero-desc": "Strategic IT Manager specializing in orchestrating national banking ecosystems, optimizing workforce technology, and ensuring absolute regulatory data compliance.",
-                "resume-title": "Experience History", "portfolio-title": "Consultancy Hub",
-                "btn-audio": "My Resume (Audio)", "testi-title": "Authority Hub", "contact-title": "Strategic Partnership",
-                "btn-consult": "Consultancy Hub", "btn-banking": "Bank Ops", "btn-matrix": "Expertise Matrix",
-                "res-2-1": "Automated reporting for LBU, SID, SKN (BI/OJK) with zero technical deviations.",
-                "res-2-2": "Led SAP HCM and Employee Self Service (ESS) national rollout.",
-                "res-2-3": "Guaranteed 99.9% uptime for core banking iSeries AS400 and ISO 8583 card switching.",
-                "res-2-4": "Verified expertise in Hardware Security Module (HSM) PayShield 9000 compliance."
-            },
+        // Language System
+        const translations = {
             id: {
-                "nav-home": "Beranda", "nav-resume": "Resume", "nav-portfolio": "Portofolio", "nav-contact": "Kontak",
-                "hero-tag": "16+ TAHUN KEUNGGULAN PROFESIONAL",
-                "hero-desc": "Manajer IT Strategis yang mengorkestrasi ekosistem perbankan nasional, mengoptimalkan teknologi tenaga kerja, dan memastikan kepatuhan regulasi data mutlak.",
-                "resume-title": "Riwayat Karir", "portfolio-title": "Pusat Konsultansi",
-                "btn-audio": "Resume Saya (Audio)", "testi-title": "Pusat Otoritas", "contact-title": "Kemitraan Strategis",
-                "btn-consult": "Sektor Konsultansi", "btn-banking": "Sektor Bank", "btn-matrix": "Matriks Ahli",
-                "res-2-1": "Otomasi pelaporan mandatori LBU, SID, SKN untuk kepatuhan Bank Indonesia dengan catatan nol deviasi teknis.",
-                "res-2-2": "Mengelola migrasi database tenaga kerja ke SAP HCM yang meningkatkan efisiensi operasional SDM hingga 95%.",
-                "res-2-3": "Menjamin uptime 99,9% untuk iSeries AS400 dan switching kartu ISO 8583, memastikan zero data loss.",
-                "res-2-4": "Keahlian terverifikasi dalam kepatuhan Hardware Security Module (HSM) PayShield 9000."
+                salute: "Halo, saya",
+                typed: ['STRATEGIC IT MANAGER.', 'IT OPERATIONS MANAGER.', 'SYSTEMS ARCHITECT.'],
+                desc: "Strategic IT Manager mengorkestrasi ekosistem perbankan nasional, mengoptimalkan teknologi tenaga kerja, dan memastikan kepatuhan regulasi data mutlak."
+            },
+            en: {
+                salute: "Hello, I'm",
+                typed: ['STRATEGIC IT MANAGER.', 'IT OPERATIONS MANAGER.', 'SYSTEMS ARCHITECT.'],
+                desc: "Strategic IT Manager orchestrating national banking ecosystems, optimizing workforce technology, and ensuring absolute regulatory data compliance."
             }
         };
 
-        function changeLang(lang) {
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (i18n[lang][key]) el.innerText = i18n[lang][key];
+        let currentLang = 'id';
+        let typedInstance = null;
+
+        function startTyped(lang) {
+            if(typedInstance) typedInstance.destroy();
+            typedInstance = new Typed('#typed', { 
+                strings: translations[lang].typed, 
+                typeSpeed: 50, backSpeed: 30, backDelay: 2500, loop: true 
             });
-            document.getElementById('l-en').style.color = (lang === 'en') ? '#ff014f' : '#94a3b8';
-            document.getElementById('l-id').style.color = (lang === 'id') ? '#ff014f' : '#94a3b8';
         }
 
-        // Projects
+        function changeLang(lang) {
+            currentLang = lang;
+            document.getElementById('hero-salute').innerText = translations[lang].salute;
+            document.getElementById('hero-desc').innerText = translations[lang].desc;
+            document.getElementById('l-en').style.color = (lang === 'en') ? '#ff014f' : '#94a3b8';
+            document.getElementById('l-id').style.color = (lang === 'id') ? '#ff014f' : '#94a3b8';
+            startTyped(lang);
+        }
+        startTyped('id'); // Init
+
+        // Authority Slider
+        let curT = 1;
+        function setTesti(n) {
+            document.querySelectorAll('.testi-slide').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
+            const slide = document.getElementById(`testi-${n}`);
+            const dot = document.getElementById(`dot-${n}`);
+            if(slide && dot) { slide.classList.add('active'); dot.classList.add('active'); curT = n; }
+        }
+        setInterval(() => { let next = (curT >= 4) ? 1 : curT + 1; setTesti(next); }, 12000);
+
+        // Project Hub Data
         const projects = {
-            web: `<div><span class="text-primary text-[10px] font-black uppercase mb-4 block">Architecture</span><h4 class="text-4xl font-black uppercase mb-8 leading-tight">Strategic Enterprise Portal</h4><p class="text-lg font-bold text-slate-500 leading-relaxed mb-10">Implementing high-integrity dashboards using <b>React & Next.js</b> for real-time monitoring.</p></div><div class="rounded-[3rem] bg-slate-200 dark:bg-slate-800 flex items-center justify-center font-black text-3xl opacity-20 uppercase">Web UI</div>`,
-            live: `<div><span class="text-primary text-[10px] font-black uppercase mb-4 block">Streaming</span><h4 class="text-4xl font-black uppercase mb-8 leading-tight">Social Media Live Ops</h4><p class="text-lg font-bold text-slate-500 leading-relaxed mb-10">Managing high-bandwidth social live streaming configurations with professional encoding setups.</p></div><div class="rounded-[3rem] bg-slate-200 dark:bg-slate-800 flex items-center justify-center font-black text-3xl opacity-20 uppercase">Live Ops</div>`,
-            seo: `<div><span class="text-primary text-[10px] font-black uppercase mb-4 block">Optimization</span><h4 class="text-4xl font-black uppercase mb-8 leading-tight">SEO & Traffic Core</h4><p class="text-lg font-bold text-slate-500 leading-relaxed mb-10">Driving high-volume organic traffic melalui strategi SEO canggih dan algoritma sosial.</p></div><div class="rounded-[3rem] bg-slate-300 dark:bg-slate-800 flex items-center justify-center font-black text-3xl opacity-20 uppercase">SEO CORE</div>`
+            web: `<div><span class="text-primary text-[10px] font-black uppercase mb-4 block tracking-[3px]">Architecture</span><h4 class="text-4xl font-black uppercase mb-8 leading-tight dark:text-white">Strategic Enterprise Portal</h4><p class="text-lg font-bold text-slate-500 leading-relaxed mb-10 dark:text-slate-400">Implementasi dashboard dengan integritas tinggi menggunakan <b>React & Next.js</b> untuk monitoring real-time perbankan nasional.</p></div>`,
+            live: `<div><span class="text-primary text-[10px] font-black uppercase mb-4 block tracking-[3px]">Streaming</span><h4 class="text-4xl font-black uppercase mb-8 leading-tight">Social Media Live Ops</h4><p class="text-lg font-bold text-slate-500 leading-relaxed mb-10 dark:text-slate-400">Mengelola konfigurasi live streaming sosial dengan bandwidth tinggi dan setup encoding profesional tingkat nasional.</p></div>`,
+            seo: `<div><span class="text-primary text-[10px] font-black uppercase mb-4 block tracking-[3px]">Optimization</span><h4 class="text-4xl font-black uppercase mb-8 leading-tight">SEO & Traffic Growth</h4><p class="text-lg font-bold text-slate-500 leading-relaxed mb-10 dark:text-slate-400">Mendorong trafik organik bervolume tinggi melalui strategi SEO canggih dan algoritma media sosial terbaru.</p></div>`,
+            agency: `<div><span class="text-primary text-[10px] font-black uppercase mb-4 block tracking-[3px]">Transformation</span><h4 class="text-4xl font-black uppercase mb-8 leading-tight">Digital Marketing Agency</h4><p class="text-lg font-bold text-slate-500 leading-relaxed mb-10 dark:text-slate-400">Skalasi infrastruktur agensi digital nasional untuk ekspansi media nasional terpadu (HAS Creative).</p></div>`
         };
 
         function showTab(id) {
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            const btns = document.querySelectorAll('.tab-btn');
-            btns.forEach(btn => {
-                if(btn.innerText.toLowerCase().includes(id.replace('web','desain').replace('live','stream').replace('seo','trafik'))) btn.classList.add('active');
-            });
+            document.querySelectorAll('#portfolio-hub .inbio-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(`t-${id}`).classList.add('active');
             document.getElementById('tab-content').innerHTML = projects[id];
             lucide.createIcons();
         }
-        showTab('web');
+        showTab('web'); // Init
 
-        let curT = 1;
-        function setTesti(n) {
-            document.querySelectorAll('.testi-slide').forEach(p => p.classList.remove('active'));
-            document.querySelectorAll('.dot').forEach(d => d.classList.remove('active'));
-            const slide = document.getElementById(`testi-${n}`);
-            if(slide) slide.classList.add('active');
-            const dot = document.getElementById(`dot-${n}`);
-            if(dot) dot.classList.add('active');
-            curT = n;
-        }
-        setInterval(() => {
-            curT = (curT >= 3) ? 1 : curT + 1;
-            setTesti(curT);
-        }, 10000);
-
-        function playResume() {
-            const speech = new SpeechSynthesisUtterance("Hello, I'm Dede Hardiyanto. Strategic IT Manager specialized in banking systems and workforce technology.");
-            window.speechSynthesis.speak(speech);
-        }
-
-        new Typed('#typed', { strings: ['SYSTEMS LEAD.', 'IT OPERATIONS MANAGER.', 'STRATEGIC ADVISOR.'], typeSpeed: 50, backSpeed: 30, backDelay: 2500, loop: true });
         function toggleTheme() { document.documentElement.classList.toggle('dark'); }
         function toggleDrawer() { document.getElementById('side-drawer').classList.toggle('-translate-x-full'); }
     </script>
 </body>
 </html>
+
