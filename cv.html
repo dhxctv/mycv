@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="id" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dede Hardiyanto | Strategic IT Executive</title>
+    
+    <!-- Icons -->
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+
+    <!-- Frameworks -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        header: ['Montserrat', 'sans-serif']
+                    },
+                    colors: {
+                        primary: '#ff014f', 
+                        accent: '#4b0082',
+                        darkCard: '#1e2125'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root { --p-color: #ff014f; }
+        html { scroll-behavior: smooth; background-color: #ecf0f3; height: 100%; }
+        html.dark { background-color: #0f1113; }
+        
+        /* Typography Perfection */
+        * { font-style: normal !important; letter-spacing: 0px !important; }
+        .font-black { font-weight: 900 !important; font-family: 'Montserrat', sans-serif !important; }
+        p, li { line-height: 1.8 !important; font-size: 0.95rem; } 
+
+        .is-quote { font-style: italic !important; font-weight: 500 !important; line-height: 2.2 !important; color: #5a5e63 !important; } 
+        .dark .is-quote { color: #cbd5e1 !important; }
+
+        body { background-color: inherit; color: #3c3e41; transition: background 0.4s ease; min-height: 100vh; display: flex; flex-direction: column; }
+        .dark body { color: #c4cfde; }
+        
+        main { flex: 1; }
+
+        .inbio-card { 
+            background: #ecf0f3; 
+            box-shadow: 10px 10px 20px #d1d9e6, -10px -10px 20px #ffffff; 
+            border-radius: 35px;
+            transition: 0.4s ease;
+        }
+        .dark .inbio-card { background: #1e2125; box-shadow: 10px 10px 19px #0b0d0e, -5px -5px 15px #262a2d; }
+
+        /* --- THE AXIS LOCK TIMELINE --- */
+        .axis-wrapper { position: relative; margin-left: 10%; max-width: 1000px; padding-left: 0; }
+        @media (max-width: 768px) { .axis-wrapper { margin-left: 30px; } }
+
+        .tl-main-line { position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: #d1d9e6; z-index: 1; }
+        .dark .tl-main-line { background: #2c3036; }
+
+        .sector-header-box { 
+            position: relative;
+            background: linear-gradient(135deg, #1e2125 0%, #ff014f 100%);
+            padding: 25px 35px;
+            border-radius: 30px;
+            margin-bottom: 60px;
+            color: white;
+            box-shadow: 10px 20px 40px rgba(0,0,0,0.3);
+            left: -20px; z-index: 10;
+        }
+
+        .tl-item { position: relative; padding-left: 60px; margin-bottom: 100px; z-index: 5; }
+        .tl-node { position: absolute; left: 0px; top: 40px; width: 34px; height: 34px; background: #ecf0f3; border: 8px solid #d1d9e6; border-radius: 50%; z-index: 30; transform: translateX(-50%); }
+        /* Konektor presisi tanpa celah */
+        .tl-connector { position: absolute; left: -5px; top: 55px; width: 65px; height: 6px; background: #d1d9e6; z-index: 2; }
+        .dark .tl-node { background: #1e2125; border-color: #2c3036; }
+        .dark .tl-connector { background: #2c3036; }
+
+        .active-item .tl-node { background: #ff014f !important; border-color: #ff014f !important; box-shadow: 0 0 20px rgba(255,1,79,0.5); }
+        .active-item .tl-connector { background: #ff014f !important; }
+        .active-item .inbio-card { background: linear-gradient(145deg, #ff014f, #d10041) !important; color: white !important; transform: scale(1.02); }
+        .active-item h4, .active-item p, .active-item li { color: white !important; }
+
+        /* Skill Bar */
+        .skill-bar-fill { width: 0%; transition: width 1.5s cubic-bezier(0.1, 0, 0.2, 1); background: linear-gradient(90deg, #ff014f, #ff8c00); }
+
+        /* Hub Konsultansi Tabulation */
+        .tab-btn { transition: 0.3s; opacity: 0.4; cursor: pointer; padding-bottom: 10px; border-bottom: 4px solid transparent; font-weight: 800; text-transform: uppercase; font-size: 11px; }
+        .tab-btn.active { border-bottom-color: #ff014f; opacity: 1; color: #ff014f; }
+        
+        .consult-display-card { 
+            background: linear-gradient(135deg, #1e2125 0%, #ff014f 100%); 
+            color: white; min-height: 500px; border-radius: 40px; overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
+
+        /* Footer Aesthetics Unified */
+        .footer-compliance-group { display: flex; flex-direction: column; align-items: center; gap: 4px; margin-top: 2rem; }
+        .footer-compliance-group p { font-family: 'Montserrat', sans-serif !important; font-size: 12px; text-transform: uppercase; letter-spacing: 3px; color: #94a3b8; font-weight: 800; margin: 0; }
+
+        /* Print Master Architecture */
+        @media print {
+            nav, footer, .inbio-btn, #btn-back-to-top, #wa-floating, #contact, #portfolio-hub, #sec-matrix, #authority { display: none !important; }
+            body { background: white !important; color: black !important; padding: 10mm !important; }
+            main { margin-top: 0 !important; }
+            #home { padding-top: 0 !important; }
+            .inbio-card { box-shadow: none !important; border: 1px solid #ddd !important; break-inside: avoid; }
+            .tl-main-line, .tl-connector { background: #ccc !important; }
+            h1 { font-size: 32pt !important; color: #ff014f !important; }
+            h2 { font-size: 18pt !important; color: #ff014f !important; border-bottom: 2px solid #ff014f; padding-bottom: 5px; }
+            .axis-wrapper { margin-left: 20px !important; }
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+    <!-- Floating Actions -->
+    <button id="btn-back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-8 left-8 inbio-btn p-4 rounded-full text-primary shadow-2xl opacity-0 pointer-events-none z-[1500]">
+        <i data-lucide="arrow-up" size="24"></i>
+    </button>
+    <button id="wa-floating" onclick="window.open('https://wa.me/6282318885200')" class="fixed bottom-8 right-8 inbio-btn p-4 rounded-full text-green-500 shadow-2xl animate-bounce z-[1500]">
+        <i data-lucide="message-circle" size="24"></i>
+    </button>
+
+    <main>
+        <!-- Navbar -->
+        <nav class="fixed top-0 w-full z-[800] bg-white/95 dark:bg-[#0f1113]/95 backdrop-blur-md h-20 flex items-center shadow-none">
+            <div class="max-w-7xl mx-auto px-6 w-full flex justify-between items-center">
+                <img src="logo.png" class="w-12 h-12 rounded-full border-2 border-primary object-cover shadow-lg">
+                <div class="hidden lg:flex items-center gap-10 text-[10px] font-black uppercase">
+                    <a href="#home" class="hover:text-primary" data-i18n="nav-home">Beranda</a>
+                    <a href="#resume" class="hover:text-primary" data-i18n="nav-resume">Resume</a>
+                    <a href="#portfolio-hub" class="hover:text-primary" data-i18n="nav-portfolio">Portofolio</a>
+                    <a href="#contact" class="hover:text-primary" data-i18n="nav-contact">Kontak</a>
+                    <div class="flex gap-4 ml-4">
+                        <button onclick="changeLang('en')" id="l-en" class="text-slate-400">ENG</button>
+                        <button onclick="changeLang('id')" id="l-id" class="text-primary font-black underline">ID</button>
+                    </div>
+                </div>
+                <button onclick="toggleTheme()" class="inbio-btn p-3 rounded-xl text-primary transition-transform active:scale-90"><i data-lucide="moon" class="dark:hidden"></i><i data-lucide="sun" class="hidden dark:block"></i></button>
+            </div>
+        </nav>
+
+        <!-- Hero -->
+        <section id="home" class="pt-48 pb-20 px-6 max-w-7xl mx-auto reveal active">
+            <div class="text-center lg:text-left">
+                <p class="text-primary font-black uppercase tracking-[6px] mb-6 text-[10px]" data-i18n="hero-tag">16+ TAHUN PENGALAMAN STRATEGIS</p>
+                <h1 class="font-black leading-[1] tracking-tighter dark:text-white mb-8">
+                    <span id="hero-salute">Halo, saya</span> <span class="text-primary">DEDE</span>.<br>
+                    <span id="typed" class="text-primary uppercase"></span>
+                </h1>
+                <p class="text-base md:text-lg max-w-3xl text-slate-600 dark:text-slate-400 font-bold mb-12" id="hero-desc" data-i18n="hero-desc">
+                    Strategic IT Manager mengorkestrasi ekosistem perbankan nasional, mengoptimalkan teknologi tenaga kerja, dan memastikan kepatuhan regulasi data mutlak.
+                </p>
+                <div class="flex justify-center lg:justify-start">
+                    <button onclick="window.print()" class="inbio-btn px-10 py-5 rounded-2xl text-primary font-black uppercase text-[10px] shadow-xl active:scale-95" data-i18n="btn-dl">Unduh Executive Summary (PDF)</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resume Section (Restored Axis) -->
+        <section id="resume" class="py-24 px-6 border-t border-black/5 reveal">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl font-black uppercase mb-20 dark:text-white text-center lg:text-left" data-i18n="resume-title">Riwayat Karir</h2>
+                <div class="axis-wrapper text-left">
+                    <div class="tl-main-line"></div>
+                    
+                    <!-- Strategic -->
+                    <div class="mb-40">
+                        <div class="sector-header-box active">
+                            <h3 class="text-xl font-black uppercase">Strategic Projects</h3>
+                            <div class="h-px w-full bg-white/20 my-3"></div>
+                            <p class="text-[10px] uppercase font-bold" data-i18n="sp-desc">IT Digital System & Consultant | 2016 - SEKARANG</p>
+                        </div>
+                        <div class="tl-item relative">
+                            <div class="tl-connector"></div><div class="tl-node"></div>
+                            <div class="inbio-card p-10 cursor-pointer" onclick="activateItem(this)">
+                                <h4 class="text-xl font-black mb-4 uppercase">Environmental ESG Dashboard</h4>
+                                <p class="text-slate-500 text-[11px] font-black uppercase mb-6">2022 - 2024</p>
+                                <p class="text-slate-600 dark:text-slate-400 font-bold" data-i18n="sp-1-d">Merancang dashboard pelaporan data ESG nasional terintegrasi untuk kementerian nasional guna transparansi internasional agenda G20 Bali.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Banking -->
+                    <div class="mb-20">
+                        <div class="sector-header-box active">
+                            <h3 class="text-xl font-black uppercase">Banking Enterprise</h3>
+                            <div class="h-px w-full bg-white/20 my-3"></div>
+                            <p class="text-[10px] uppercase font-bold">PT BANK MNC INTERNASIONAL TBK | 2010 - 2016</p>
+                        </div>
+                        <div class="tl-item relative">
+                            <div class="tl-connector"></div><div class="tl-node"></div>
+                            <div class="inbio-card p-10 cursor-pointer" onclick="activateItem(this)">
+                                <h4 class="text-xl font-black mb-6 uppercase" data-i18n="be-1-t">System Development Specialist</h4>
+                                <ul class="space-y-4 text-slate-600 dark:text-slate-400 font-bold list-disc pl-5" data-i18n="be-1-list">
+                                    <li>Mengawal migrasi infrastruktur kritis perbankan kantor pusat dengan status Zero Data Loss.</li>
+                                    <li>Implementasi ekosistem SAP HCM & Employee Self Service (ESS) nasional.</li>
+                                    <li>Pengelolaan teknis iSeries AS400 & ATM Switching (99,9% Uptime).</li>
+                                    <li>Automasi Regulatory Reporting LBU, SID, SKN (BI & OJK Compliance).</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Matrix -->
+        <section id="sec-matrix" class="py-24 bg-white/30 dark:bg-black/10 reveal">
+            <div class="max-w-7xl mx-auto px-6 text-center">
+                <h2 class="text-3xl font-black uppercase mb-16 dark:text-white" data-i18n="matrix-title">Matriks Keahlian</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 text-left max-w-5xl mx-auto">
+                    <div class="space-y-10">
+                        <div><p class="font-black text-[10px] uppercase mb-3 text-slate-500">Governance & Compliance <span class="float-right text-primary">100%</span></p>
+                        <div class="h-2.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden shadow-inner"><div class="h-full skill-bar-fill shadow-lg" data-target="100%"></div></div></div>
+                        <div><p class="font-black text-[10px] uppercase mb-3 text-slate-500">Banking Core AS400 <span class="float-right text-primary">98%</span></p>
+                        <div class="h-2.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden shadow-inner"><div class="h-full skill-bar-fill shadow-lg" data-target="98%"></div></div></div>
+                    </div>
+                    <div class="space-y-10">
+                        <div><p class="font-black text-[10px] uppercase mb-3 text-slate-500">Workforce Tech (SAP) <span class="float-right text-primary">95%</span></p>
+                        <div class="h-2.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden shadow-inner"><div class="h-full skill-bar-fill shadow-lg" data-target="95%"></div></div></div>
+                        <div><p class="font-black text-[10px] uppercase mb-3 text-slate-500">Python Automation <span class="float-right text-primary">92%</span></p>
+                        <div class="h-2.5 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden shadow-inner"><div class="h-full skill-bar-fill shadow-lg" data-target="92%"></div></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Authority (Full 4 Slides) -->
+        <section id="authority" class="py-24 reveal">
+            <div class="max-w-7xl mx-auto px-6 text-center">
+                <h2 class="text-3xl font-black uppercase mb-16 dark:text-white" data-i18n="testi-title">Pusat Otoritas</h2>
+                <div class="max-w-4xl mx-auto min-h-[350px] flex items-center">
+                    <div id="testi-content" class="inbio-card p-10 lg:p-20 text-center w-full"></div>
+                </div>
+                <div class="flex justify-center gap-4 mt-12" id="testi-dots"></div>
+            </div>
+        </section>
+
+        <!-- Hub Konsultansi -->
+        <section id="portfolio-hub" class="py-24 border-t border-black/5 bg-white/30 dark:bg-black/10 reveal">
+            <div class="max-w-7xl mx-auto px-6 text-center">
+                <h2 class="text-3xl font-black uppercase mb-16 dark:text-white" data-i18n="portfolio-title">Hub Konsultansi</h2>
+                <div class="flex flex-wrap justify-center gap-6 mb-16 no-scrollbar" id="hub-tabs">
+                    <button onclick="showTab('web')" id="tab-web" class="tab-btn active" data-i18n="t-web">Desain Web</button>
+                    <button onclick="showTab('seo')" id="tab-seo" class="tab-btn" data-i18n="t-seo">Trafik SEO</button>
+                    <button onclick="showTab('agency')" id="tab-agency" class="tab-btn" data-i18n="t-agency">Agensi Digital</button>
+                </div>
+                <div id="tab-content" class="consult-display-card p-12 md:p-24 text-left"></div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="py-32 px-6 max-w-7xl mx-auto reveal">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <div class="text-center lg:text-left">
+                    <h3 class="text-2xl md:text-4xl font-black uppercase leading-tight mb-6 dark:text-white" data-i18n="c-h3">Siap Mengorkestrasi Visi Anda?</h3>
+                    <p class="text-slate-500 font-bold" data-i18n="c-p">Hubungi untuk konsultasi teknis tingkat tinggi atau akselerasi digital strategis.</p>
+                </div>
+                <div class="inbio-card p-10">
+                    <form onsubmit="handleMail(event)" class="space-y-8">
+                        <input type="text" id="f-name" placeholder="Nama Lengkap" class="w-full bg-transparent border-b-2 border-black/10 py-3 outline-none font-bold" required>
+                        <textarea id="f-msg" placeholder="Pesan Strategis" rows="3" class="w-full bg-transparent border-b-2 border-black/10 py-3 outline-none font-bold" required></textarea>
+                        <button type="submit" class="w-full bg-primary text-white py-5 rounded-2xl font-black uppercase shadow-lg active:scale-95 transition-all">Submit Proposal</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Masterpiece -->
+    <footer class="py-24 text-center bg-white dark:bg-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <img src="logo.png" class="w-20 h-20 rounded-full mx-auto mb-10 opacity-30 grayscale">
+            <div class="footer-compliance-group mb-12">
+                <p data-i18n="f-1">COMPLIANCE VERIFIED | REPORTING AUTOMATION</p>
+                <p data-i18n="f-2">ZERO DATA LOSS</p>
+            </div>
+            <p class="text-[10px] font-black text-slate-300 uppercase tracking-widest">© 2026 Dede Hardiyanto. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        const translations = {
+            id: {
+                "nav-home": "Beranda", "nav-resume": "Resume", "nav-portfolio": "Portofolio", "nav-contact": "Kontak",
+                "hero-tag": "16+ TAHUN PENGALAMAN STRATEGIS", "hero-desc": "Strategic IT Manager mengorkestrasi ekosistem perbankan nasional, mengoptimalkan teknologi tenaga kerja, dan memastikan kepatuhan regulasi data mutlak.",
+                "btn-dl": "Unduh Executive Summary (PDF)", "resume-title": "Riwayat Karir",
+                "sp-desc": "IT Digital System & Consultant | 2016 - SEKARANG",
+                "be-1-t": "System Development Specialist", "be-1-list": "<li>Mengawal migrasi infrastruktur kritis perbankan kantor pusat (Zero Data Loss).</li><li>Implementasi ekosistem SAP HCM & ESS Portals nasional.</li><li>Pengelolaan teknis iSeries AS400 & ATM Switching (99,9% Uptime).</li><li>Automasi Regulatory Reporting LBU, SID, SKN (BI & OJK Compliance).</li>",
+                "portfolio-title": "Hub Konsultansi", "t-web": "Desain Web", "t-seo": "Trafik SEO", "t-agency": "Agensi Digital",
+                "matrix-title": "Matriks Keahlian", "testi-title": "Pusat Otoritas", "f-1": "COMPLIANCE VERIFIED | REPORTING AUTOMATION", "f-2": "ZERO DATA LOSS",
+                "c-h3": "Siap Mengorkestrasi Visi Anda?", "c-p": "Hubungi untuk konsultasi teknis tingkat tinggi atau akselerasi digital strategis.",
+                "typed": ["STRATEGIC IT MANAGER.", "SYSTEMS ARCHITECT.", "DATA COMPLIANCE EXPERT."]
+            },
+            en: {
+                "nav-home": "Home", "nav-resume": "Resume", "nav-portfolio": "Portfolio", "nav-contact": "Contact",
+                "hero-tag": "16+ YEARS STRATEGIC EXPERIENCE", "hero-desc": "Strategic IT Manager orchestrating national banking ecosystems and ensuring absolute data compliance.",
+                "btn-dl": "Download Executive Summary (PDF)", "resume-title": "Career History",
+                "sp-desc": "IT Digital System & Consultant | 2016 - PRESENT",
+                "be-1-t": "System Development Specialist", "be-1-list": "<li>Banking HQ infrastructure migration with Zero Data Loss status.</li><li>Implementation of SAP HCM & national ESS portal ecosystems.</li><li>iSeries AS400 & ATM Switching management (99.9% Uptime).</li><li>Regulatory Reporting automation for BI & OJK compliance.</li>",
+                "portfolio-title": "Consultancy HUB", "t-web": "Web Design", "t-seo": "SEO Traffic", "t-agency": "Digital Agency",
+                "matrix-title": "Expertise Matrix", "testi-title": "Authority Hub", "f-1": "COMPLIANCE VERIFIED | REPORTING AUTOMATION", "f-2": "ZERO DATA LOSS",
+                "c-h3": "Ready to Orchestrate Your Vision?", "c-p": "Contact for high-stakes technical consulting or strategic digital scaling.",
+                "typed": ["STRATEGIC IT MANAGER.", "SYSTEMS ARCHITECT.", "DATA COMPLIANCE EXPERT."]
+            }
+        };
+
+        const testimonials = [
+            { t: '"Excellent orchestration during the national system migration. Guaranteed 100% data integrity for the entire network."', r: "HEAD OF IT GROUP", c: "PT Bank MNC Internasional Tbk" },
+            { t: '"The synthesis of complex ESG data for G20 Bali Summit set a new transparency standard for our national platform."', r: "CEO ENVIRA ID", c: "National Data Partner" },
+            { t: '"Strategic leadership in digital multimedia infrastructure achieved nationwide content delivery with zero latency."', r: "MEDIA STRATEGIST", c: "HAS Creative Multimedia" },
+            { t: '"Vast technical command over banking core switching and security compliance, a vital enterprise asset."', r: "COMPLIANCE ADVISOR", c: "Global Security Hub" }
+        ];
+
+        let typedInstance = null;
+
+        function updateUI(lang) {
+            const isID = lang === 'id';
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) el.innerHTML = translations[lang][key];
+            });
+            document.getElementById('hero-salute').innerText = isID ? "Halo, saya" : "Hello, I'm";
+            document.getElementById('l-id').className = isID ? 'text-primary font-black underline' : 'text-slate-400';
+            document.getElementById('l-en').className = !isID ? 'text-primary font-black underline' : 'text-slate-400';
+            if(typedInstance) typedInstance.destroy();
+            typedInstance = new Typed('#typed', { strings: translations[lang].typed, typeSpeed: 50, backSpeed: 30, loop: true });
+            renderTesti(0);
+            showTab('web');
+        }
+
+        function showTab(id) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(`tab-${id}`).classList.add('active');
+            const data = {
+                web: { t: "Enterprise Architecture", d: "Portal perbankan terintegrasi dengan keamanan HSM tingkat tinggi." },
+                seo: { t: "Growth Optimization", d: "Optimalisasi algoritma trafik nasional untuk ekspansi digital nasional." },
+                agency: { t: "Digital Ecosystem", d: "Skalasi infrastruktur media digital terpadu (HAS Creative)." }
+            };
+            document.getElementById('tab-content').innerHTML = `<div><h4 class="text-3xl md:text-5xl font-black uppercase mb-8">${data[id].t}</h4><p class="text-lg opacity-80 leading-relaxed">${data[id].d}</p></div>`;
+        }
+
+        function renderTesti(n) {
+            const t = testimonials[n];
+            document.getElementById('testi-content').innerHTML = `<p class="text-xl lg:text-2xl is-quote mb-10">${t.t}</p><h6 class="font-black text-lg">${t.r}</h6><p class="text-primary font-bold text-[10px] uppercase mt-2">${t.c}</p>`;
+            let dots = "";
+            testimonials.forEach((_, i) => dots += `<span onclick="renderTesti(${i})" class="w-2.5 h-2.5 rounded-full cursor-pointer ${i===n ? 'bg-primary' : 'bg-slate-300'}"></span>`);
+            document.getElementById('testi-dots').innerHTML = dots;
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { 
+                const fills = entry.target.querySelectorAll('.skill-bar-fill');
+                if(entry.isIntersecting) { fills.forEach(bar => bar.style.width = bar.getAttribute('data-target')); }
+                else { fills.forEach(bar => bar.style.width = '0%'); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal, #sec-matrix').forEach(el => observer.observe(el));
+
+        function changeLang(lang) { updateUI(lang); }
+        window.onload = () => { updateUI('id'); };
+        function toggleTheme() { document.documentElement.classList.toggle('dark'); }
+        function handleMail(e) { e.preventDefault(); window.location.href = `mailto:mrdhex@gmail.com?body=${document.getElementById('f-msg').value}`; }
+        function activateItem(card) { document.querySelectorAll('.tl-item').forEach(i => i.classList.remove('active-item')); card.closest('.tl-item').classList.add('active-item'); }
+        window.onscroll = () => { const btt = document.getElementById('btn-back-to-top'); if(window.scrollY > 800) { btt.style.opacity = "1"; btt.style.pointerEvents = "auto"; } else { btt.style.opacity = "0"; btt.style.pointerEvents = "none"; } };
+    </script>
+</body>
+</html>
